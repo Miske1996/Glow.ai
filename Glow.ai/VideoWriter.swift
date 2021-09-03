@@ -8,7 +8,7 @@
 import Foundation
 import AVFoundation
 import Photos
-
+import UIKit
 
 class VideoWriter {
     
@@ -20,9 +20,11 @@ class VideoWriter {
                         AVVideoWidthKey : 720,
                         AVVideoHeightKey : 1280,
                         AVVideoCompressionPropertiesKey : [
-                            AVVideoAverageBitRateKey : 2300000,
-                            ],
-                        ])
+                            AVVideoAverageBitRateKey : 2300000,],])
+    let sourcePixelBufferAttributes = [
+                        kCVPixelBufferWidthKey as String: NSNumber(value: Int32(UIScreen.main.bounds.width)),
+                        kCVPixelBufferHeightKey as String: NSNumber(value: Int32(UIScreen.main.bounds.height))]
+    var videoWriterInputPixelBufferAdaptor: AVAssetWriterInputPixelBufferAdaptor?
     let audioWriterInput = AVAssetWriterInput(mediaType: AVMediaType.audio, outputSettings: nil)
     var tempURL: URL?
     var isRecording:Bool = false
@@ -30,6 +32,9 @@ class VideoWriter {
     
     func writerSetup(){
         do {
+            self.videoWriterInputPixelBufferAdaptor = AVAssetWriterInputPixelBufferAdaptor(
+                        assetWriterInput: self.videoWriterInput,
+                        sourcePixelBufferAttributes: sourcePixelBufferAttributes)
             self.tempURL = videoFileLocation()
             videoWriter = try AVAssetWriter(outputURL: self.tempURL!, fileType: AVFileType.mov)
             // add video input

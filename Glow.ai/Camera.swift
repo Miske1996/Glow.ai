@@ -4,7 +4,6 @@
 //
 //  Created by Miske Elvilaly on 02/09/2021.
 //
-
 import AVFoundation
 import SwiftUI
 import Photos
@@ -14,6 +13,7 @@ class Camera: NSObject, ObservableObject {
     
     // MARK: UIImage processed and sent to display
     @Published var displayImage:UIImage = UIImage()
+    
     
     // MARK: Detected Features propreties
     var posturekeypoints:[CGPoint]?
@@ -140,10 +140,7 @@ extension Camera: AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDat
             connection.videoOrientation = .portrait
         }
        
-        if writable,output == videoOutput,(writerManager.videoWriterInput.isReadyForMoreMediaData) {
-            // write video buffer
-            writerManager.videoWriterInput.append(sampleBuffer)
-        } else if writable,output == audioOutput,(writerManager.audioWriterInput.isReadyForMoreMediaData) {
+        if writable,output == audioOutput,(writerManager.audioWriterInput.isReadyForMoreMediaData) {
             // write audio buffer
             writerManager.audioWriterInput.append(sampleBuffer)
         }
@@ -153,10 +150,39 @@ extension Camera: AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDat
         let ciImage = CIImage(cvPixelBuffer: imageBuffer)
         let context = CIContext()
         guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else { return }
-        let uiImage = UIImage(cgImage: cgImage)
+        var uiImage = UIImage(cgImage: cgImage)
+        let rect = CGRect(origin: .zero, size: CGSize(width: uiImage.size.width, height: uiImage.size.height))
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1
         
         
+        if (self.posturekeypoints != nil) && !self.posturekeypoints!.isEmpty {
+            let path = UIBezierPath()
+            var i = 1
+            for point in self.posturekeypoints! {
+              path.move(to: point)
+              path.addArc(withCenter: point, radius: 3, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
+                if (i < self.posturekeypoints!.count ){
+                    path.addLine(to: self.posturekeypoints![i])
+                }
+              i = i + 1
+            }
+            let shapeLayer = CAShapeLayer()
+            shapeLayer.fillColor = UIColor.cyan.cgColor
+            shapeLayer.path = path.cgPath
+            uiImage = UIGraphicsImageRenderer(bounds: rect, format: format).image { (ctx) in
+                uiImage.draw(at: CGPoint.zero, blendMode: .multiply, alpha: 1)
+                return shapeLayer.render(in: ctx.cgContext)
+            }
+        }
         
+        if writable,output == videoOutput,((writerManager.videoWriterInputPixelBufferAdaptor?.assetWriterInput.isReadyForMoreMediaData) != nil) {
+            // write video buffer
+            let buffer = imageToBuffer(from: uiImage)
+            let currentSampleTime = CMSampleBufferGetOutputPresentationTimeStamp(sampleBuffer)
+            writerManager.videoWriterInputPixelBufferAdaptor?.append(buffer!, withPresentationTime: currentSampleTime)
+        }
+      
         // publishing changes to the main thread and Processing images
         DispatchQueue.main.async {
             
@@ -176,6 +202,30 @@ extension Camera: AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDat
             }
         }
     }
+    func imageToBuffer(from image: UIImage) -> CVPixelBuffer? {
+      let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary
+      var pixelBuffer : CVPixelBuffer?
+      let status = CVPixelBufferCreate(kCFAllocatorDefault, Int(image.size.width), Int(image.size.height), kCVPixelFormatType_32ARGB, attrs, &pixelBuffer)
+      guard (status == kCVReturnSuccess) else {
+        return nil
+      }
+
+      CVPixelBufferLockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
+      let pixelData = CVPixelBufferGetBaseAddress(pixelBuffer!)
+
+      let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
+      let context = CGContext(data: pixelData, width: Int(image.size.width), height: Int(image.size.height), bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer!), space: rgbColorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
+
+      context?.translateBy(x: 0, y: image.size.height)
+      context?.scaleBy(x: 1.0, y: -1.0)
+
+      UIGraphicsPushContext(context!)
+      image.draw(in: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
+      UIGraphicsPopContext()
+      CVPixelBufferUnlockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
+
+      return pixelBuffer
+    }
 }
     
 
@@ -188,6 +238,7 @@ extension Camera {
     func bodyPoseHandler(request: VNRequest, error: Error?) {
         guard let observations =
             request.results as? [VNHumanBodyPoseObservation] else {
+            
         return
         }
         // Process each observation to find the recognized body pose points.
@@ -197,7 +248,7 @@ extension Camera {
     func processObservation(_ observation: VNHumanBodyPoseObservation)  {
         // Retrieve all torso points.
         guard let recognizedPoints =
-            try? observation.recognizedPoints(.all) else { return }
+                try? observation.recognizedPoints(.all) else { return }
 
         // Torso joint names in a clockwise ordering.
         let kp: [VNHumanBodyPoseObservation.JointName] = [
@@ -216,11 +267,12 @@ extension Camera {
         ]
         let imagePoints: [CGPoint] = kp.compactMap {
         guard let point = recognizedPoints[$0], point.confidence > 0.55 else { return nil }
-        var pt = CGPoint(x: point.x * 550 , y: point.y * 1000)
-        pt.y = 910 - pt.y
-        pt.x = pt.x - 15
+        var pt = CGPoint(x: point.x * 1200 , y: point.y * 2000)
+        pt.y = 1950 - pt.y
+        pt.x = pt.x - 50
         return pt
         }
+        print(imagePoints)
         self.posturekeypoints = imagePoints
     }
   
