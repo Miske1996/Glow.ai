@@ -4,11 +4,12 @@
 //
 //  Created by Miske Elvilaly on 02/09/2021.
 //
-import AVFoundation
+
 import SwiftUI
 import Photos
 import Vision
-class Camera: NSObject, ObservableObject {
+
+class CameraViewModel: NSObject, ObservableObject {
     
     
     // MARK: UIImage processed and sent to display
@@ -17,19 +18,14 @@ class Camera: NSObject, ObservableObject {
     
     // MARK: Detected Features propreties
     var posturekeypoints:[CGPoint]?
+    var faceBox:CGRect?
+    var imageSize:CGSize?
     
+    // MARK: Camera Model
+    var cameraModel = CameraModel()
     
-    // MARK: Capture session propreties
-    let captureSession = AVCaptureSession()
-    var activeInput: AVCaptureDeviceInput!
-    let videoOutput = AVCaptureVideoDataOutput()
-    let audioOutput = AVCaptureAudioDataOutput()
-    private let videoDataOutputQueue = DispatchQueue(
-                                          label: "com.glow.videoOutput",
-                                            qos: .userInteractive)
-    
-    // MARK: AVAssetWriter Manager
-    var writerManager = VideoWriter()
+    // MARK: VideoWriterViewModel
+    var videoWriterViewModel = VideoWriterViewModel()
 
 
     // MARK: Capture session Functions
@@ -40,7 +36,7 @@ class Camera: NSObject, ObservableObject {
     }
     
     func setupSession() {
-        captureSession.beginConfiguration()
+        cameraModel.captureSession.beginConfiguration()
         guard let camera = AVCaptureDevice.default(for: .video) else {
         return
         }
@@ -51,42 +47,42 @@ class Camera: NSObject, ObservableObject {
         let videoInput = try AVCaptureDeviceInput(device: camera)
         let audioInput = try AVCaptureDeviceInput(device: mic)
         for input in [videoInput, audioInput] {
-          if captureSession.canAddInput(input) {
-            captureSession.addInput(input)
+            if cameraModel.captureSession.canAddInput(input) {
+                cameraModel.captureSession.addInput(input)
           }
         }
-        activeInput = videoInput
+            cameraModel.activeInput = videoInput
         } catch {
             print("Error setting device input: \(error)")
             return
         }
 
-        if captureSession.canAddOutput(videoOutput){
-            self.videoOutput.alwaysDiscardsLateVideoFrames = true
-            self.videoOutput.setSampleBufferDelegate(self, queue: videoDataOutputQueue)
-            captureSession.addOutput(videoOutput)
+        if cameraModel.captureSession.canAddOutput(cameraModel.videoOutput){
+            self.cameraModel.videoOutput.alwaysDiscardsLateVideoFrames = true
+            self.cameraModel.videoOutput.setSampleBufferDelegate(self, queue: cameraModel.videoDataOutputQueue)
+            cameraModel.captureSession.addOutput(cameraModel.videoOutput)
         }
 
-        if captureSession.canAddOutput(audioOutput){
-            audioOutput.setSampleBufferDelegate(self, queue: DispatchQueue.main)
-            captureSession.addOutput(audioOutput)
+        if cameraModel.captureSession.canAddOutput(cameraModel.audioOutput){
+            cameraModel.audioOutput.setSampleBufferDelegate(self, queue: DispatchQueue.main)
+            cameraModel.captureSession.addOutput(cameraModel.audioOutput)
         }
 
-        captureSession.commitConfiguration()
+        cameraModel.captureSession.commitConfiguration()
     }
     
     func startSession() {
-        if !captureSession.isRunning {
+        if !cameraModel.captureSession.isRunning {
             DispatchQueue.global(qos: .default).async { [weak self] in
-            self?.captureSession.startRunning()
+                self?.cameraModel.captureSession.startRunning()
         }
         }
     }
 
     func stopSession() {
-        if captureSession.isRunning {
+        if cameraModel.captureSession.isRunning {
             DispatchQueue.global(qos: .default).async() { [weak self] in
-            self?.captureSession.stopRunning()
+                self?.cameraModel.captureSession.stopRunning()
         }
         }
     }
@@ -100,20 +96,20 @@ class Camera: NSObject, ObservableObject {
     }
 
     public func switchCamera() {
-        let position: AVCaptureDevice.Position = (activeInput.device.position == .back) ? .front : .back
+        let position: AVCaptureDevice.Position = (cameraModel.activeInput.device.position == .back) ? .front : .back
         guard let device = camera(for: position) else {
           return
         }
-        captureSession.beginConfiguration()
-        captureSession.removeInput(activeInput)
+        cameraModel.captureSession.beginConfiguration()
+        cameraModel.captureSession.removeInput(cameraModel.activeInput)
         do {
-        activeInput = try AVCaptureDeviceInput(device: device)
+            cameraModel.activeInput = try AVCaptureDeviceInput(device: device)
         } catch {
         print("error: \(error.localizedDescription)")
         return
         }
-        captureSession.addInput(activeInput)
-        captureSession.commitConfiguration()
+        cameraModel.captureSession.addInput(cameraModel.activeInput)
+        cameraModel.captureSession.commitConfiguration()
     }
 
 }
@@ -122,27 +118,27 @@ class Camera: NSObject, ObservableObject {
 
 // MARK: Received frames and audio From Devices
 
-extension Camera: AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDataOutputSampleBufferDelegate {
+extension CameraViewModel: AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDataOutputSampleBufferDelegate {
   
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
         // Recording Video
         
-        let writable = writerManager.canWrite()
+        let writable = videoWriterViewModel.canWrite()
         if writable,
-           writerManager.sessionAtSourceTime == nil {
+           videoWriterViewModel.videoWriterObject.sessionAtSourceTime == nil {
             // start writing
-            writerManager.sessionAtSourceTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
-            writerManager.videoWriter!.startSession(atSourceTime: writerManager.sessionAtSourceTime!)
+            videoWriterViewModel.videoWriterObject.sessionAtSourceTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
+            videoWriterViewModel.videoWriterObject.avAssetWriter!.startSession(atSourceTime: videoWriterViewModel.videoWriterObject.sessionAtSourceTime!)
         }
 
-        if output == videoOutput {
+        if output == cameraModel.videoOutput {
             connection.videoOrientation = .portrait
         }
        
-        if writable,output == audioOutput,(writerManager.audioWriterInput.isReadyForMoreMediaData) {
+        if writable,output == cameraModel.audioOutput,(videoWriterViewModel.videoWriterObject.audioWriterInput.isReadyForMoreMediaData) {
             // write audio buffer
-            writerManager.audioWriterInput.append(sampleBuffer)
+            videoWriterViewModel.videoWriterObject.audioWriterInput.append(sampleBuffer)
         }
         
         // Processing images
@@ -155,45 +151,62 @@ extension Camera: AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDat
         let format = UIGraphicsImageRendererFormat()
         format.scale = 1
         
+        //Get image size
+        self.imageSize = uiImage.size
         
         if (self.posturekeypoints != nil) && !self.posturekeypoints!.isEmpty {
-            let path = UIBezierPath()
-            var i = 1
-            for point in self.posturekeypoints! {
-              path.move(to: point)
-              path.addArc(withCenter: point, radius: 3, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
+            let bonespath = UIBezierPath()
+            bonespath.move(to: posturekeypoints![0])
+            for i in 1...self.posturekeypoints!.count {
                 if (i < self.posturekeypoints!.count ){
-                    path.addLine(to: self.posturekeypoints![i])
+                    bonespath.addLine(to: self.posturekeypoints![i])
                 }
-              i = i + 1
             }
-            let shapeLayer = CAShapeLayer()
-            shapeLayer.fillColor = UIColor.cyan.cgColor
-            shapeLayer.path = path.cgPath
+            bonespath.close()
+            let bonesShape = CAShapeLayer()
+            bonesShape.fillColor = .none
+            bonesShape.strokeColor = UIColor.brown.cgColor
+            bonesShape.lineWidth = 5
+            bonesShape.path = bonespath.cgPath
+            
             uiImage = UIGraphicsImageRenderer(bounds: rect, format: format).image { (ctx) in
                 uiImage.draw(at: CGPoint.zero, blendMode: .multiply, alpha: 1)
-                return shapeLayer.render(in: ctx.cgContext)
+                bonesShape.render(in: ctx.cgContext)
+                for point in self.posturekeypoints! {
+           
+                        ctx.cgContext.setFillColor(UIColor.gray.cgColor)
+                        let rectangle = CGRect(x: point.x - 10, y: point.y - 10, width: 20, height: 20)
+                        ctx.cgContext.addEllipse(in: rectangle)
+                        ctx.cgContext.drawPath(using: .fillStroke)
+           
+                }
+               
             }
         }
         
-        if writable,output == videoOutput,((writerManager.videoWriterInputPixelBufferAdaptor?.assetWriterInput.isReadyForMoreMediaData) != nil) {
+
+        
+        if writable,output == cameraModel.videoOutput,((videoWriterViewModel.videoWriterObject.videoWriterInputPixelBufferAdaptor?.assetWriterInput.isReadyForMoreMediaData) != nil) {
             // write video buffer
             let buffer = imageToBuffer(from: uiImage)
             let currentSampleTime = CMSampleBufferGetOutputPresentationTimeStamp(sampleBuffer)
-            writerManager.videoWriterInputPixelBufferAdaptor?.append(buffer!, withPresentationTime: currentSampleTime)
+            videoWriterViewModel.videoWriterObject.videoWriterInputPixelBufferAdaptor?.append(buffer!, withPresentationTime: currentSampleTime)
         }
-      
+        
+        
         // publishing changes to the main thread and Processing images
         DispatchQueue.main.async {
             
             self.displayImage = uiImage
             // Create a new image-request handler.
-
-            let requestHandler = VNImageRequestHandler(cgImage: (uiImage.cgImage!))
+            let requestHandler = VNImageRequestHandler(cmSampleBuffer: sampleBuffer,
+                                                       orientation: .up,
+                                                       options: [:])
 
             // Create a new request to recognize a human body pose.
             let request = VNDetectHumanBodyPoseRequest(completionHandler: self.bodyPoseHandler)
-
+            
+      
             do {
                 // Perform the body pose-detection request.
                 try requestHandler.perform([request])
@@ -233,7 +246,7 @@ extension Camera: AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDat
 
 
 // MARK: FEATURES DETECTION FUNCTIONS
-extension Camera {
+extension CameraViewModel {
    
     func bodyPoseHandler(request: VNRequest, error: Error?) {
         guard let observations =
@@ -251,7 +264,12 @@ extension Camera {
                 try? observation.recognizedPoints(.all) else { return }
 
         // Torso joint names in a clockwise ordering.
-        let kp: [VNHumanBodyPoseObservation.JointName] = [
+        let joints: [VNHumanBodyPoseObservation.JointName] = [
+            .leftEar,
+            .leftEye,
+            .nose,
+            .rightEye,
+            .rightEar,
             .leftAnkle,
             .leftKnee,
             .leftHip,
@@ -264,16 +282,16 @@ extension Camera {
             .rightHip,
             .rightKnee,
             .rightAnkle,
+            .neck,
+            .root
         ]
-        let imagePoints: [CGPoint] = kp.compactMap {
+        let imagePoints: [CGPoint] = joints.compactMap {
         guard let point = recognizedPoints[$0], point.confidence > 0.55 else { return nil }
-        var pt = CGPoint(x: point.x * 1200 , y: point.y * 2000)
-        pt.y = 1950 - pt.y
-        pt.x = pt.x - 50
-        return pt
+        return CGPoint(x: point.x * Double(self.imageSize!.width) , y: (1 - point.y) * Double(self.imageSize!.height))
         }
-        print(imagePoints)
         self.posturekeypoints = imagePoints
     }
+    
+
   
 }

@@ -3,12 +3,33 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F4D178926DFE5D9007A2133 /* VideoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4D178826DFE5D9007A2133 /* VideoWriter.swift */; };
-		0F4D179226E100CB007A2133 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4D179126E100CB007A2133 /* Camera.swift */; };
+		0F0E424C2705BA40007E1291 /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E424B2705BA40007E1291 /* CameraModel.swift */; };
+		0F0E42542705C142007E1291 /* VideoWriterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E42532705C142007E1291 /* VideoWriterModel.swift */; };
+		0F0E425E2705C651007E1291 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E425D2705C651007E1291 /* CustomTextFieldView.swift */; };
+		0F48139626FB9256000290B2 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48139526FB9256000290B2 /* AuthViewModel.swift */; };
+		0F48139926FCEB45000290B2 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48139826FCEB45000290B2 /* RegisterViewModel.swift */; };
+		0F4D178926DFE5D9007A2133 /* VideoWriterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4D178826DFE5D9007A2133 /* VideoWriterViewModel.swift */; };
+		0F4D179226E100CB007A2133 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4D179126E100CB007A2133 /* CameraViewModel.swift */; };
+		0F742B4B26E91052008D8EE2 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F742B4A26E91052008D8EE2 /* Register.swift */; };
+		0F742B5C26EA3B6F008D8EE2 /* TitilliumWeb-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F742B5026EA3B6F008D8EE2 /* TitilliumWeb-Black.ttf */; };
+		0F742B5D26EA3B6F008D8EE2 /* TitilliumWeb-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F742B5126EA3B6F008D8EE2 /* TitilliumWeb-Bold.ttf */; };
+		0F742B5E26EA3B6F008D8EE2 /* TitilliumWeb-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F742B5226EA3B6F008D8EE2 /* TitilliumWeb-Regular.ttf */; };
+		0F742B5F26EA3B6F008D8EE2 /* TitilliumWeb-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F742B5326EA3B6F008D8EE2 /* TitilliumWeb-SemiBold.ttf */; };
+		0F742B6026EA3B6F008D8EE2 /* TitilliumWeb-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F742B5426EA3B6F008D8EE2 /* TitilliumWeb-ExtraLight.ttf */; };
+		0F742B6126EA3B6F008D8EE2 /* TitilliumWeb-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F742B5526EA3B6F008D8EE2 /* TitilliumWeb-BoldItalic.ttf */; };
+		0F742B6226EA3B6F008D8EE2 /* TitilliumWeb-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F742B5626EA3B6F008D8EE2 /* TitilliumWeb-ExtraLightItalic.ttf */; };
+		0F742B6426EA3B6F008D8EE2 /* TitilliumWeb-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F742B5826EA3B6F008D8EE2 /* TitilliumWeb-SemiBoldItalic.ttf */; };
+		0F742B6526EA3B6F008D8EE2 /* TitilliumWeb-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F742B5926EA3B6F008D8EE2 /* TitilliumWeb-LightItalic.ttf */; };
+		0F742B6626EA3B6F008D8EE2 /* TitilliumWeb-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F742B5A26EA3B6F008D8EE2 /* TitilliumWeb-Italic.ttf */; };
+		0F742B6726EA3B6F008D8EE2 /* TitilliumWeb-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F742B5B26EA3B6F008D8EE2 /* TitilliumWeb-Light.ttf */; };
+		0F742B6B26EB8985008D8EE2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F742B6A26EB8985008D8EE2 /* Utils.swift */; };
+		0F742B7126EBAB7F008D8EE2 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F742B7026EBAB7F008D8EE2 /* Login.swift */; };
+		0F78DB7C26F4F4B700B1E986 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F78DB7B26F4F4B700B1E986 /* GoogleService-Info.plist */; };
+		63A62DE53D787FF712E85C8E /* Pods_Glow_ai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6FF512FD7E57794584165CA /* Pods_Glow_ai.framework */; };
 		D339619425CE17E500A5B699 /* GlowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D339619325CE17E500A5B699 /* GlowApp.swift */; };
 		D339619625CE17E500A5B699 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D339619525CE17E500A5B699 /* ContentView.swift */; };
 		D339619825CE17E800A5B699 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D339619725CE17E800A5B699 /* Assets.xcassets */; };
@@ -16,8 +37,31 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0F4D178826DFE5D9007A2133 /* VideoWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWriter.swift; sourceTree = "<group>"; };
-		0F4D179126E100CB007A2133 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Camera.swift; path = ../../Glow.ai/Glow.ai/Camera.swift; sourceTree = "<group>"; };
+		0F0E424B2705BA40007E1291 /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
+		0F0E42532705C142007E1291 /* VideoWriterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWriterModel.swift; sourceTree = "<group>"; };
+		0F0E425D2705C651007E1291 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
+		0F48139526FB9256000290B2 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		0F48139826FCEB45000290B2 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		0F4D178826DFE5D9007A2133 /* VideoWriterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWriterViewModel.swift; sourceTree = "<group>"; };
+		0F4D179126E100CB007A2133 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CameraViewModel.swift; path = "../New Group/CameraViewModel.swift"; sourceTree = "<group>"; };
+		0F742B4A26E91052008D8EE2 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		0F742B5026EA3B6F008D8EE2 /* TitilliumWeb-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Black.ttf"; sourceTree = "<group>"; };
+		0F742B5126EA3B6F008D8EE2 /* TitilliumWeb-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Bold.ttf"; sourceTree = "<group>"; };
+		0F742B5226EA3B6F008D8EE2 /* TitilliumWeb-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Regular.ttf"; sourceTree = "<group>"; };
+		0F742B5326EA3B6F008D8EE2 /* TitilliumWeb-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-SemiBold.ttf"; sourceTree = "<group>"; };
+		0F742B5426EA3B6F008D8EE2 /* TitilliumWeb-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-ExtraLight.ttf"; sourceTree = "<group>"; };
+		0F742B5526EA3B6F008D8EE2 /* TitilliumWeb-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-BoldItalic.ttf"; sourceTree = "<group>"; };
+		0F742B5626EA3B6F008D8EE2 /* TitilliumWeb-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		0F742B5826EA3B6F008D8EE2 /* TitilliumWeb-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		0F742B5926EA3B6F008D8EE2 /* TitilliumWeb-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-LightItalic.ttf"; sourceTree = "<group>"; };
+		0F742B5A26EA3B6F008D8EE2 /* TitilliumWeb-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Italic.ttf"; sourceTree = "<group>"; };
+		0F742B5B26EA3B6F008D8EE2 /* TitilliumWeb-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Light.ttf"; sourceTree = "<group>"; };
+		0F742B6A26EB8985008D8EE2 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		0F742B7026EBAB7F008D8EE2 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		0F78DB7B26F4F4B700B1E986 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C4D2CA4928F796FB246F8516 /* Pods-Glow.ai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glow.ai.debug.xcconfig"; path = "Target Support Files/Pods-Glow.ai/Pods-Glow.ai.debug.xcconfig"; sourceTree = "<group>"; };
+		C53C2BAA481772DE4BB24804 /* Pods-Glow.ai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glow.ai.release.xcconfig"; path = "Target Support Files/Pods-Glow.ai/Pods-Glow.ai.release.xcconfig"; sourceTree = "<group>"; };
+		C6FF512FD7E57794584165CA /* Pods_Glow_ai.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Glow_ai.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D339619025CE17E500A5B699 /* Glow.ai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glow.ai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D339619325CE17E500A5B699 /* GlowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowApp.swift; sourceTree = "<group>"; };
 		D339619525CE17E500A5B699 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -31,17 +75,126 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63A62DE53D787FF712E85C8E /* Pods_Glow_ai.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F0E424A2705BA0A007E1291 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0F0E425A2705C3AF007E1291 /* CameraModels */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0F0E42502705BC9E007E1291 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0F0E42592705C398007E1291 /* AuthViewModels */,
+				0F0E42582705C384007E1291 /* CameraViewModels */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0F0E42512705BE6A007E1291 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0F0E42612705C684007E1291 /* Auth-views */,
+				0F0E425C2705C615007E1291 /* App-shared-views */,
+				D339619525CE17E500A5B699 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0F0E42582705C384007E1291 /* CameraViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0F4D178826DFE5D9007A2133 /* VideoWriterViewModel.swift */,
+				0F4D179126E100CB007A2133 /* CameraViewModel.swift */,
+			);
+			path = CameraViewModels;
+			sourceTree = "<group>";
+		};
+		0F0E42592705C398007E1291 /* AuthViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0F48139526FB9256000290B2 /* AuthViewModel.swift */,
+				0F48139826FCEB45000290B2 /* RegisterViewModel.swift */,
+			);
+			path = AuthViewModels;
+			sourceTree = "<group>";
+		};
+		0F0E425A2705C3AF007E1291 /* CameraModels */ = {
+			isa = PBXGroup;
+			children = (
+				0F0E424B2705BA40007E1291 /* CameraModel.swift */,
+				0F0E42532705C142007E1291 /* VideoWriterModel.swift */,
+			);
+			path = CameraModels;
+			sourceTree = "<group>";
+		};
+		0F0E425C2705C615007E1291 /* App-shared-views */ = {
+			isa = PBXGroup;
+			children = (
+				0F0E425D2705C651007E1291 /* CustomTextFieldView.swift */,
+			);
+			path = "App-shared-views";
+			sourceTree = "<group>";
+		};
+		0F0E42612705C684007E1291 /* Auth-views */ = {
+			isa = PBXGroup;
+			children = (
+				0F742B7026EBAB7F008D8EE2 /* Login.swift */,
+				0F742B4A26E91052008D8EE2 /* Register.swift */,
+			);
+			path = "Auth-views";
+			sourceTree = "<group>";
+		};
+		0F742B4E26EA3ADD008D8EE2 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0F742B4F26EA3B6F008D8EE2 /* Titillium_Web */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		0F742B4F26EA3B6F008D8EE2 /* Titillium_Web */ = {
+			isa = PBXGroup;
+			children = (
+				0F742B5026EA3B6F008D8EE2 /* TitilliumWeb-Black.ttf */,
+				0F742B5126EA3B6F008D8EE2 /* TitilliumWeb-Bold.ttf */,
+				0F742B5226EA3B6F008D8EE2 /* TitilliumWeb-Regular.ttf */,
+				0F742B5326EA3B6F008D8EE2 /* TitilliumWeb-SemiBold.ttf */,
+				0F742B5426EA3B6F008D8EE2 /* TitilliumWeb-ExtraLight.ttf */,
+				0F742B5526EA3B6F008D8EE2 /* TitilliumWeb-BoldItalic.ttf */,
+				0F742B5626EA3B6F008D8EE2 /* TitilliumWeb-ExtraLightItalic.ttf */,
+				0F742B5826EA3B6F008D8EE2 /* TitilliumWeb-SemiBoldItalic.ttf */,
+				0F742B5926EA3B6F008D8EE2 /* TitilliumWeb-LightItalic.ttf */,
+				0F742B5A26EA3B6F008D8EE2 /* TitilliumWeb-Italic.ttf */,
+				0F742B5B26EA3B6F008D8EE2 /* TitilliumWeb-Light.ttf */,
+			);
+			path = Titillium_Web;
+			sourceTree = "<group>";
+		};
+		7754127FF8E72C1957BD5463 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C4D2CA4928F796FB246F8516 /* Pods-Glow.ai.debug.xcconfig */,
+				C53C2BAA481772DE4BB24804 /* Pods-Glow.ai.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D339618725CE17E500A5B699 = {
 			isa = PBXGroup;
 			children = (
 				D339619225CE17E500A5B699 /* Glow.ai */,
 				D339619125CE17E500A5B699 /* Products */,
+				7754127FF8E72C1957BD5463 /* Pods */,
+				F77F3ED5F2CFF8197DDE065D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,13 +209,16 @@
 		D339619225CE17E500A5B699 /* Glow.ai */ = {
 			isa = PBXGroup;
 			children = (
+				0F0E42512705BE6A007E1291 /* View */,
+				0F0E42502705BC9E007E1291 /* ViewModel */,
+				0F0E424A2705BA0A007E1291 /* Model */,
+				0F742B4E26EA3ADD008D8EE2 /* Fonts */,
 				D339619325CE17E500A5B699 /* GlowApp.swift */,
-				D339619525CE17E500A5B699 /* ContentView.swift */,
 				D339619725CE17E800A5B699 /* Assets.xcassets */,
 				D339619C25CE17E800A5B699 /* Info.plist */,
+				0F78DB7B26F4F4B700B1E986 /* GoogleService-Info.plist */,
 				D339619925CE17E800A5B699 /* Preview Content */,
-				0F4D178826DFE5D9007A2133 /* VideoWriter.swift */,
-				0F4D179126E100CB007A2133 /* Camera.swift */,
+				0F742B6A26EB8985008D8EE2 /* Utils.swift */,
 			);
 			path = Glow.ai;
 			sourceTree = "<group>";
@@ -75,6 +231,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		F77F3ED5F2CFF8197DDE065D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C6FF512FD7E57794584165CA /* Pods_Glow_ai.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +246,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D339619F25CE17E800A5B699 /* Build configuration list for PBXNativeTarget "Glow.ai" */;
 			buildPhases = (
+				574110453D5537944228EDFE /* [CP] Check Pods Manifest.lock */,
 				D339618C25CE17E500A5B699 /* Sources */,
 				D339618D25CE17E500A5B699 /* Frameworks */,
 				D339618E25CE17E500A5B699 /* Resources */,
+				9E91AC1A3525FCCD6231B169 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -109,7 +275,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D339618B25CE17E500A5B699 /* Build configuration list for PBXProject "glow.ai" */;
+			buildConfigurationList = D339618B25CE17E500A5B699 /* Build configuration list for PBXProject "Glow.ai" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -132,22 +298,84 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F742B5E26EA3B6F008D8EE2 /* TitilliumWeb-Regular.ttf in Resources */,
 				D339619B25CE17E800A5B699 /* Preview Assets.xcassets in Resources */,
 				D339619825CE17E800A5B699 /* Assets.xcassets in Resources */,
+				0F742B5D26EA3B6F008D8EE2 /* TitilliumWeb-Bold.ttf in Resources */,
+				0F742B5F26EA3B6F008D8EE2 /* TitilliumWeb-SemiBold.ttf in Resources */,
+				0F742B5C26EA3B6F008D8EE2 /* TitilliumWeb-Black.ttf in Resources */,
+				0F742B6626EA3B6F008D8EE2 /* TitilliumWeb-Italic.ttf in Resources */,
+				0F742B6426EA3B6F008D8EE2 /* TitilliumWeb-SemiBoldItalic.ttf in Resources */,
+				0F742B6126EA3B6F008D8EE2 /* TitilliumWeb-BoldItalic.ttf in Resources */,
+				0F742B6726EA3B6F008D8EE2 /* TitilliumWeb-Light.ttf in Resources */,
+				0F742B6226EA3B6F008D8EE2 /* TitilliumWeb-ExtraLightItalic.ttf in Resources */,
+				0F742B6526EA3B6F008D8EE2 /* TitilliumWeb-LightItalic.ttf in Resources */,
+				0F742B6026EA3B6F008D8EE2 /* TitilliumWeb-ExtraLight.ttf in Resources */,
+				0F78DB7C26F4F4B700B1E986 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		574110453D5537944228EDFE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Glow.ai-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E91AC1A3525FCCD6231B169 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Glow.ai/Pods-Glow.ai-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Glow.ai/Pods-Glow.ai-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Glow.ai/Pods-Glow.ai-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D339618C25CE17E500A5B699 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F742B7126EBAB7F008D8EE2 /* Login.swift in Sources */,
 				D339619625CE17E500A5B699 /* ContentView.swift in Sources */,
-				0F4D179226E100CB007A2133 /* Camera.swift in Sources */,
+				0F0E424C2705BA40007E1291 /* CameraModel.swift in Sources */,
+				0F742B6B26EB8985008D8EE2 /* Utils.swift in Sources */,
+				0F4D179226E100CB007A2133 /* CameraViewModel.swift in Sources */,
 				D339619425CE17E500A5B699 /* GlowApp.swift in Sources */,
-				0F4D178926DFE5D9007A2133 /* VideoWriter.swift in Sources */,
+				0F4D178926DFE5D9007A2133 /* VideoWriterViewModel.swift in Sources */,
+				0F742B4B26E91052008D8EE2 /* Register.swift in Sources */,
+				0F48139926FCEB45000290B2 /* RegisterViewModel.swift in Sources */,
+				0F0E42542705C142007E1291 /* VideoWriterModel.swift in Sources */,
+				0F48139626FB9256000290B2 /* AuthViewModel.swift in Sources */,
+				0F0E425E2705C651007E1291 /* CustomTextFieldView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +500,7 @@
 		};
 		D33961A025CE17E800A5B699 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4D2CA4928F796FB246F8516 /* Pods-Glow.ai.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -294,6 +523,7 @@
 		};
 		D33961A125CE17E800A5B699 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C53C2BAA481772DE4BB24804 /* Pods-Glow.ai.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -317,7 +547,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D339618B25CE17E500A5B699 /* Build configuration list for PBXProject "glow.ai" */ = {
+		D339618B25CE17E500A5B699 /* Build configuration list for PBXProject "Glow.ai" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D339619D25CE17E800A5B699 /* Debug */,
