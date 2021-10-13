@@ -6,32 +6,79 @@
 //
 
 import Foundation
+import Combine
+enum RegistrationState {
+    case successfull
+    case failed(error:Error)
+    case na
+}
 
-class RegisterViewModel: ObservableObject {
-     @Published var email = ""
-     @Published var username = ""
-     @Published var password = ""
-     @Published var confirmedPassword = ""
+protocol RegisterViewModelProtocol {
+    func register()
+    var service: RegistrationService {get}
+    var state: RegistrationState {get}
+    var userInfo: UserRegisterModel {get}
+    init(service:RegistrationService)
+}
+
+final class RegisterViewModel: ObservableObject , RegisterViewModelProtocol{
+   
+    var service: RegistrationService
     
+    var state: RegistrationState = .na
+    
+    var userInfo: UserRegisterModel = UserRegisterModel(email: "", username: "", password: "", confirmedPassword: "")
+    
+    private var subscriptions = Set<AnyCancellable>()
+    init(service: RegistrationService) {
+        self.service = service
+        if isTextFieldEmpty() {
+             self.textFieldValidationText = ""
+        }else {
+             self.textFieldValidationText = "Empty Field"
+        }
+    }
+    
+    
+    func register() {
+        
+        service
+            .register(with: userInfo)
+            .sink { [weak self] res in
+                
+                switch res {
+                case .failure(let error):
+                    self?.state = .failed(error:error)
+                default:break
+                }
+                
+            } receiveValue: { [weak self] in
+                self?.state = .successfull
+            }
+            .store(in: &subscriptions)
+      
+        
+        
+            
+    }
+    
+    
+    
+//    @Published var user = UserRegisterModel()
+    @Published var textFieldValidationText:String = ""
+   
     var isTextFieldValid:Bool {
         return isTextFieldEmpty()
     }
-    
+
     func isTextFieldEmpty() -> Bool {
-        if !email.isEmpty && !username.isEmpty && !password.isEmpty && !confirmedPassword.isEmpty  {
+        if !userInfo.email.isEmpty && !userInfo.username.isEmpty && !userInfo.password.isEmpty && !userInfo.confirmedPassword.isEmpty  {
             return true
         }else {
             return false
         }
     }
-    var textFieldValidationText:String {
-      print("TEST")
-       if isTextFieldEmpty() {
-           return ""
-       }else {
-           return "Empty Field"
-       }
-   }
+    
     
     
 }

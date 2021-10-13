@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-struct Register: View {
-    @ObservedObject var registerVM = RegisterViewModel()
+struct RegisterView: View {
+    @StateObject private var registerVM = RegisterViewModel(service: RegistrationServiceImpl())
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var authModel:AuthViewModel
-
+    @State var alertModel:AlertModel = AlertModel()
     var body: some View {
         
         ZStack{
             Color.black
-            ScrollView{
+            ScrollView(showsIndicators: false) {
                 VStack{
                     
                     Spacer()
@@ -26,40 +26,59 @@ struct Register: View {
                         .font(Font.custom("TitilliumWeb-Bold", size: 80))
                     VStack{
                         CustomTextField(
-                            promptText: registerVM.textFieldValidationText, placeholder: Text("Enter Your Email").foregroundColor(Color.gray).font(.custom("TitilliumWeb-ExtraLight", size: 16)),
-                            text: $registerVM.email, commit:  {
-                                print(registerVM.email)
+                             placeholder: Text("Enter Your Email").foregroundColor(Color.gray).font(.custom("TitilliumWeb-ExtraLight", size: 16)),
+                            text: $registerVM.userInfo.email, commit:  {
+                                print(registerVM.userInfo.email)
                             }, imageName: "envelope.open.fill", isSecure: false)
                         
                         CustomTextField(
-                            promptText: registerVM.textFieldValidationText, placeholder: Text("Enter Your Username").foregroundColor(Color.gray).font(.custom("TitilliumWeb-ExtraLight", size: 16)),
-                            text: $registerVM.username, commit:  {
-                                print(registerVM.username)
+                             placeholder: Text("Enter Your Username").foregroundColor(Color.gray).font(.custom("TitilliumWeb-ExtraLight", size: 16)),
+                            text: $registerVM.userInfo.username, commit:  {
+                                print(registerVM.userInfo.username)
                             }, imageName: "person.fill", isSecure: false)
                         CustomTextField(
-                            promptText: registerVM.textFieldValidationText, placeholder: Text("Enter Your Password").foregroundColor(Color.gray).font(.custom("TitilliumWeb-ExtraLight", size: 16)),
-                            text: $registerVM.password, commit:  {
-                                print(registerVM.username)
+                           placeholder: Text("Enter Your Password").foregroundColor(Color.gray).font(.custom("TitilliumWeb-ExtraLight", size: 16)),
+                            text: $registerVM.userInfo.password, commit:  {
+                                print(registerVM.userInfo.username)
                             }, imageName: "lock.fill", isSecure: true)
                         CustomTextField(
-                            promptText: registerVM.textFieldValidationText, placeholder: Text("Confirm Your Password").foregroundColor(Color.gray).font(.custom("TitilliumWeb-ExtraLight", size: 16)),
-                            text: $registerVM.confirmedPassword, commit:  {
-                                print(registerVM.username)
+                            placeholder: Text("Confirm Your Password").foregroundColor(Color.gray).font(.custom("TitilliumWeb-ExtraLight", size: 16)),
+                            text: $registerVM.userInfo.confirmedPassword, commit:  {
+                                print(registerVM.userInfo.username)
                             }, imageName: "lock.fill", isSecure: true)
                     }
                     
                   
                     Button(action: {
-                                print("Register Tapped")
-                        authModel.signUp(email: registerVM.email, password: registerVM.password)
-                            }) {
+                            
+                            if !registerVM.userInfo.email.isEmpty && !registerVM.userInfo.password.isEmpty && !registerVM.userInfo.username.isEmpty && !registerVM.userInfo.confirmedPassword.isEmpty {
+                                print("Not empty")
+                                self.alertModel.isAlertPresented = false
+                                registerVM.register()
+//                                authModel.signUp(email: registerVM.user.email, password: registerVM.user.password,compltionHandler: { (result, error) in
+//                                    guard result != nil, error == nil else {
+//                                        self.alertModel.textAlertTitle = "ERROR"
+//                                        self.alertModel.textAlertMessage = "Please check your information"
+//                                        self.alertModel.isAlertPresented = true
+//                                        return
+//                                    }
+//                                   
+//                             print(result?.user.email)
+//                                    print("SUCCESS")
+//                                })
+                                
+                            }else {
+                                self.alertModel.textAlertTitle = "EMPTY TEXT FIELD"
+                                self.alertModel.textAlertMessage = "Please fill all the text fields"
+                                self.alertModel.isAlertPresented = true
+                            }}) {
                                 Text("Register")
                                     .customButton()
                       
                     }
                     .padding(.top,40)
                     Spacer()
-                        .frame(height: 40)
+                        .frame(height: 30)
                     VStack{
                         Divider()
                             
@@ -73,14 +92,6 @@ struct Register: View {
                                     print("apple Tapped")
                                 }) {
                             Image("apple")
-                                .resizable()
-                                .frame(width: 52, height: 52,alignment: .center)
-                        }
-                        Spacer()
-                        Button(action: {
-                                    print("facebook Tapped")
-                                }) {
-                            Image("facebook")
                                 .resizable()
                                 .frame(width: 52, height: 52,alignment: .center)
                         }
@@ -109,9 +120,17 @@ struct Register: View {
                 .padding(.horizontal,15)
                     
             }
+            .alert(isPresented: $alertModel.isAlertPresented) {
+
+                        Alert(
+                            title: Text(self.alertModel.textAlertTitle),
+                            message: Text(self.alertModel.textAlertMessage)
+                        )
+                    }
             .preferredColorScheme(.dark)
             .ignoresSafeArea(.all, edges: .all)
             }
+    
             
        
     }
@@ -121,7 +140,7 @@ struct Register: View {
 
 struct Register_Previews: PreviewProvider {
     static var previews: some View {
-        Register()
+        RegisterView()
     }
 }
 

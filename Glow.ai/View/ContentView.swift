@@ -7,11 +7,11 @@
 import SwiftUI
 
 
-struct ContentView: View {
+struct CameraView: View {
   @State var isPresented = true
   @State var isRecording = false
   @StateObject var camera = CameraViewModel()
-    
+  @EnvironmentObject var sessionService: SessionService
     
   var body: some View {
    
@@ -22,6 +22,9 @@ struct ContentView: View {
               .ignoresSafeArea(.all, edges: .all)
           
           VStack {
+            Text( "Hello, " + sessionService.userDetails.username + ".")
+                .foregroundColor(Color.newPrimaryColor)
+                .font(Font.custom("TitilliumWeb-Bold", size: 24))
             HStack {
               Spacer()
               Button {
@@ -31,8 +34,20 @@ struct ContentView: View {
                   .font(.system(size: 30))
                   .foregroundColor(.white)
               }
+                
+                Button {
+                    sessionService.logout()
+                    print(sessionService.state)
+                } label: {
+                    Image(systemName: "power")
+                    .font(.system(size: 30))
+                    .foregroundColor(.white)
+                    
+                    
+                }
+                
             }
-            .padding(30)
+            .padding(15)
             Spacer()
             HStack {
               Spacer()
@@ -54,19 +69,24 @@ struct ContentView: View {
               }
               Spacer()
             }
-            .padding(15)
+            
+        
           }
+          .padding(20)
+         
          
         }
         .onAppear {
             camera.setupCamera()
         }
-        .sheet(isPresented: $isPresented,content:{
-            Login(isPresented: $isPresented)
-                .onTapGesture {
-                    dismissKeyboard()
-                }
-        })
+        .navigationBarHidden(true)
+        
+//        .sheet(isPresented: $isPresented,content:{
+//            LoginView()
+//                .onTapGesture {
+//                    dismissKeyboard()
+//                }
+//        })
   
         
     }
@@ -74,6 +94,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        CameraView()
     }
 }

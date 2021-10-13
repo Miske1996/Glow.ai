@@ -7,6 +7,7 @@ target 'Glow.ai' do
 pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'	
+pod 'Firebase/Database'
   # Pods for Glow.ai
 
 end

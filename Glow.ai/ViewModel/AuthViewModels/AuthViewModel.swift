@@ -15,29 +15,11 @@ class AuthViewModel:ObservableObject {
         return auth.currentUser != nil
     }
     
-    func signIn(email: String , password: String){
-        auth.signIn(withEmail: email, password: password) {resutl,error in
-            guard resutl != nil, error == nil else {
-                return
-            }
-            print(resutl?.user.refreshToken)
-            print("hello")
-            //Success
-        }
-        
+    func signIn(email: String , password: String,compltionHandler: ((AuthDataResult?,Error?) -> Void)?){
+        auth.signIn(withEmail: email, password: password,completion: compltionHandler)
     }
     
-    func signUp(email:String,password:String){
-        
-        auth.createUser(withEmail: email, password: password){resutl,error in
-            guard resutl != nil, error == nil else {
-                return
-            }
-            print(resutl?.user.email)
-            print("hello")
-            //Success
-        }
-            
-        
+    func signUp(email:String,password:String,compltionHandler: ((AuthDataResult?,Error?) -> Void)?){
+        auth.createUser(withEmail: email, password: password,completion: compltionHandler)
     }
 }

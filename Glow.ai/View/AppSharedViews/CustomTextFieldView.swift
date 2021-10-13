@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CustomTextField: View {
-    var promptText:String
     var placeholder: Text
     @Binding var text: String
     var commit: ()->() = { }
@@ -28,15 +27,8 @@ struct CustomTextField: View {
                         } else {
                             SecureField("", text: $text).foregroundColor(Color.white).font(Font.custom("TitilliumWeb-ExtraLight", size: 16))
                                 .accentColor(Color.newPrimaryColor)
-                        }
-                        Text(promptText)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .font(.caption)
-                            .foregroundColor(.red)
+                        }                   
                     }
-                   
-                    
-                        
                 }
             }
             .padding()

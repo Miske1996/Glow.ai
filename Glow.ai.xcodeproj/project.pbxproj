@@ -10,11 +10,16 @@
 		0F0E424C2705BA40007E1291 /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E424B2705BA40007E1291 /* CameraModel.swift */; };
 		0F0E42542705C142007E1291 /* VideoWriterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E42532705C142007E1291 /* VideoWriterModel.swift */; };
 		0F0E425E2705C651007E1291 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E425D2705C651007E1291 /* CustomTextFieldView.swift */; };
+		0F0E42652705C9A3007E1291 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E42642705C9A3007E1291 /* CameraViewModel.swift */; };
+		0F0E42682705CAC5007E1291 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E42672705CAC5007E1291 /* LoginViewModel.swift */; };
+		0F0E426C2705CD3D007E1291 /* UserLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E426B2705CD3D007E1291 /* UserLoginModel.swift */; };
+		0F0E426F2705CD4C007E1291 /* UserRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E426E2705CD4C007E1291 /* UserRegisterModel.swift */; };
+		0F3D7332270C7EA8005A2928 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3D7331270C7EA8005A2928 /* LoginService.swift */; };
+		0F45528B2707100100868FA3 /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F45528A2707100100868FA3 /* AlertModel.swift */; };
 		0F48139626FB9256000290B2 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48139526FB9256000290B2 /* AuthViewModel.swift */; };
 		0F48139926FCEB45000290B2 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48139826FCEB45000290B2 /* RegisterViewModel.swift */; };
 		0F4D178926DFE5D9007A2133 /* VideoWriterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4D178826DFE5D9007A2133 /* VideoWriterViewModel.swift */; };
-		0F4D179226E100CB007A2133 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4D179126E100CB007A2133 /* CameraViewModel.swift */; };
-		0F742B4B26E91052008D8EE2 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F742B4A26E91052008D8EE2 /* Register.swift */; };
+		0F742B4B26E91052008D8EE2 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F742B4A26E91052008D8EE2 /* RegisterView.swift */; };
 		0F742B5C26EA3B6F008D8EE2 /* TitilliumWeb-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F742B5026EA3B6F008D8EE2 /* TitilliumWeb-Black.ttf */; };
 		0F742B5D26EA3B6F008D8EE2 /* TitilliumWeb-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F742B5126EA3B6F008D8EE2 /* TitilliumWeb-Bold.ttf */; };
 		0F742B5E26EA3B6F008D8EE2 /* TitilliumWeb-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F742B5226EA3B6F008D8EE2 /* TitilliumWeb-Regular.ttf */; };
@@ -27,8 +32,11 @@
 		0F742B6626EA3B6F008D8EE2 /* TitilliumWeb-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F742B5A26EA3B6F008D8EE2 /* TitilliumWeb-Italic.ttf */; };
 		0F742B6726EA3B6F008D8EE2 /* TitilliumWeb-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F742B5B26EA3B6F008D8EE2 /* TitilliumWeb-Light.ttf */; };
 		0F742B6B26EB8985008D8EE2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F742B6A26EB8985008D8EE2 /* Utils.swift */; };
-		0F742B7126EBAB7F008D8EE2 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F742B7026EBAB7F008D8EE2 /* Login.swift */; };
+		0F742B7126EBAB7F008D8EE2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F742B7026EBAB7F008D8EE2 /* LoginView.swift */; };
 		0F78DB7C26F4F4B700B1E986 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F78DB7B26F4F4B700B1E986 /* GoogleService-Info.plist */; };
+		0F8E68692709C684007CE188 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8E68682709C684007CE188 /* RegistrationService.swift */; };
+		0F8E6883270B16AC007CE188 /* SessionUserDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8E6882270B16AC007CE188 /* SessionUserDetailsModel.swift */; };
+		0F8E6887270B17A7007CE188 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8E6886270B17A7007CE188 /* SessionService.swift */; };
 		63A62DE53D787FF712E85C8E /* Pods_Glow_ai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6FF512FD7E57794584165CA /* Pods_Glow_ai.framework */; };
 		D339619425CE17E500A5B699 /* GlowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D339619325CE17E500A5B699 /* GlowApp.swift */; };
 		D339619625CE17E500A5B699 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D339619525CE17E500A5B699 /* ContentView.swift */; };
@@ -40,11 +48,16 @@
 		0F0E424B2705BA40007E1291 /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
 		0F0E42532705C142007E1291 /* VideoWriterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWriterModel.swift; sourceTree = "<group>"; };
 		0F0E425D2705C651007E1291 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
+		0F0E42642705C9A3007E1291 /* CameraViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
+		0F0E42672705CAC5007E1291 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		0F0E426B2705CD3D007E1291 /* UserLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginModel.swift; sourceTree = "<group>"; };
+		0F0E426E2705CD4C007E1291 /* UserRegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegisterModel.swift; sourceTree = "<group>"; };
+		0F3D7331270C7EA8005A2928 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		0F45528A2707100100868FA3 /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
 		0F48139526FB9256000290B2 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		0F48139826FCEB45000290B2 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		0F4D178826DFE5D9007A2133 /* VideoWriterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWriterViewModel.swift; sourceTree = "<group>"; };
-		0F4D179126E100CB007A2133 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CameraViewModel.swift; path = "../New Group/CameraViewModel.swift"; sourceTree = "<group>"; };
-		0F742B4A26E91052008D8EE2 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		0F742B4A26E91052008D8EE2 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		0F742B5026EA3B6F008D8EE2 /* TitilliumWeb-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Black.ttf"; sourceTree = "<group>"; };
 		0F742B5126EA3B6F008D8EE2 /* TitilliumWeb-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Bold.ttf"; sourceTree = "<group>"; };
 		0F742B5226EA3B6F008D8EE2 /* TitilliumWeb-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Regular.ttf"; sourceTree = "<group>"; };
@@ -57,8 +70,12 @@
 		0F742B5A26EA3B6F008D8EE2 /* TitilliumWeb-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Italic.ttf"; sourceTree = "<group>"; };
 		0F742B5B26EA3B6F008D8EE2 /* TitilliumWeb-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Light.ttf"; sourceTree = "<group>"; };
 		0F742B6A26EB8985008D8EE2 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		0F742B7026EBAB7F008D8EE2 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		0F742B7026EBAB7F008D8EE2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0F78DB7B26F4F4B700B1E986 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0F7A79E92716F63C00815379 /* Glow.ai.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Glow.ai.entitlements; sourceTree = "<group>"; };
+		0F8E68682709C684007CE188 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
+		0F8E6882270B16AC007CE188 /* SessionUserDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUserDetailsModel.swift; sourceTree = "<group>"; };
+		0F8E6886270B17A7007CE188 /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
 		C4D2CA4928F796FB246F8516 /* Pods-Glow.ai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glow.ai.debug.xcconfig"; path = "Target Support Files/Pods-Glow.ai/Pods-Glow.ai.debug.xcconfig"; sourceTree = "<group>"; };
 		C53C2BAA481772DE4BB24804 /* Pods-Glow.ai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glow.ai.release.xcconfig"; path = "Target Support Files/Pods-Glow.ai/Pods-Glow.ai.release.xcconfig"; sourceTree = "<group>"; };
 		C6FF512FD7E57794584165CA /* Pods_Glow_ai.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Glow_ai.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +102,8 @@
 		0F0E424A2705BA0A007E1291 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0F45528927070FE100868FA3 /* AppSharedModels */,
+				0F0E426A2705CD1D007E1291 /* AuthModels */,
 				0F0E425A2705C3AF007E1291 /* CameraModels */,
 			);
 			path = Model;
@@ -93,6 +112,7 @@
 		0F0E42502705BC9E007E1291 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0F45528D2707104A00868FA3 /* AppSharedViewModels */,
 				0F0E42592705C398007E1291 /* AuthViewModels */,
 				0F0E42582705C384007E1291 /* CameraViewModels */,
 			);
@@ -102,8 +122,8 @@
 		0F0E42512705BE6A007E1291 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0F0E42612705C684007E1291 /* Auth-views */,
-				0F0E425C2705C615007E1291 /* App-shared-views */,
+				0F0E42612705C684007E1291 /* AuthViews */,
+				0F0E425C2705C615007E1291 /* AppSharedViews */,
 				D339619525CE17E500A5B699 /* ContentView.swift */,
 			);
 			path = View;
@@ -113,7 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				0F4D178826DFE5D9007A2133 /* VideoWriterViewModel.swift */,
-				0F4D179126E100CB007A2133 /* CameraViewModel.swift */,
+				0F0E42642705C9A3007E1291 /* CameraViewModel.swift */,
 			);
 			path = CameraViewModels;
 			sourceTree = "<group>";
@@ -123,6 +143,7 @@
 			children = (
 				0F48139526FB9256000290B2 /* AuthViewModel.swift */,
 				0F48139826FCEB45000290B2 /* RegisterViewModel.swift */,
+				0F0E42672705CAC5007E1291 /* LoginViewModel.swift */,
 			);
 			path = AuthViewModels;
 			sourceTree = "<group>";
@@ -136,21 +157,46 @@
 			path = CameraModels;
 			sourceTree = "<group>";
 		};
-		0F0E425C2705C615007E1291 /* App-shared-views */ = {
+		0F0E425C2705C615007E1291 /* AppSharedViews */ = {
 			isa = PBXGroup;
 			children = (
 				0F0E425D2705C651007E1291 /* CustomTextFieldView.swift */,
 			);
-			path = "App-shared-views";
+			path = AppSharedViews;
 			sourceTree = "<group>";
 		};
-		0F0E42612705C684007E1291 /* Auth-views */ = {
+		0F0E42612705C684007E1291 /* AuthViews */ = {
 			isa = PBXGroup;
 			children = (
-				0F742B7026EBAB7F008D8EE2 /* Login.swift */,
-				0F742B4A26E91052008D8EE2 /* Register.swift */,
+				0F742B7026EBAB7F008D8EE2 /* LoginView.swift */,
+				0F742B4A26E91052008D8EE2 /* RegisterView.swift */,
 			);
-			path = "Auth-views";
+			path = AuthViews;
+			sourceTree = "<group>";
+		};
+		0F0E426A2705CD1D007E1291 /* AuthModels */ = {
+			isa = PBXGroup;
+			children = (
+				0F8E6882270B16AC007CE188 /* SessionUserDetailsModel.swift */,
+				0F0E426B2705CD3D007E1291 /* UserLoginModel.swift */,
+				0F0E426E2705CD4C007E1291 /* UserRegisterModel.swift */,
+			);
+			path = AuthModels;
+			sourceTree = "<group>";
+		};
+		0F45528927070FE100868FA3 /* AppSharedModels */ = {
+			isa = PBXGroup;
+			children = (
+				0F45528A2707100100868FA3 /* AlertModel.swift */,
+			);
+			path = AppSharedModels;
+			sourceTree = "<group>";
+		};
+		0F45528D2707104A00868FA3 /* AppSharedViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AppSharedViewModels;
 			sourceTree = "<group>";
 		};
 		0F742B4E26EA3ADD008D8EE2 /* Fonts */ = {
@@ -177,6 +223,32 @@
 				0F742B5B26EA3B6F008D8EE2 /* TitilliumWeb-Light.ttf */,
 			);
 			path = Titillium_Web;
+			sourceTree = "<group>";
+		};
+		0F8E68662709C66A007CE188 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0F8E6885270B176C007CE188 /* SessionService */,
+				0F8E68672709C671007CE188 /* AuthService */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		0F8E68672709C671007CE188 /* AuthService */ = {
+			isa = PBXGroup;
+			children = (
+				0F8E68682709C684007CE188 /* RegistrationService.swift */,
+				0F3D7331270C7EA8005A2928 /* LoginService.swift */,
+			);
+			path = AuthService;
+			sourceTree = "<group>";
+		};
+		0F8E6885270B176C007CE188 /* SessionService */ = {
+			isa = PBXGroup;
+			children = (
+				0F8E6886270B17A7007CE188 /* SessionService.swift */,
+			);
+			path = SessionService;
 			sourceTree = "<group>";
 		};
 		7754127FF8E72C1957BD5463 /* Pods */ = {
@@ -209,6 +281,8 @@
 		D339619225CE17E500A5B699 /* Glow.ai */ = {
 			isa = PBXGroup;
 			children = (
+				0F7A79E92716F63C00815379 /* Glow.ai.entitlements */,
+				0F8E68662709C66A007CE188 /* Service */,
 				0F0E42512705BE6A007E1291 /* View */,
 				0F0E42502705BC9E007E1291 /* ViewModel */,
 				0F0E424A2705BA0A007E1291 /* Model */,
@@ -364,18 +438,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F742B7126EBAB7F008D8EE2 /* Login.swift in Sources */,
+				0F742B7126EBAB7F008D8EE2 /* LoginView.swift in Sources */,
+				0F8E68692709C684007CE188 /* RegistrationService.swift in Sources */,
 				D339619625CE17E500A5B699 /* ContentView.swift in Sources */,
 				0F0E424C2705BA40007E1291 /* CameraModel.swift in Sources */,
 				0F742B6B26EB8985008D8EE2 /* Utils.swift in Sources */,
-				0F4D179226E100CB007A2133 /* CameraViewModel.swift in Sources */,
+				0F3D7332270C7EA8005A2928 /* LoginService.swift in Sources */,
+				0F45528B2707100100868FA3 /* AlertModel.swift in Sources */,
 				D339619425CE17E500A5B699 /* GlowApp.swift in Sources */,
+				0F0E42652705C9A3007E1291 /* CameraViewModel.swift in Sources */,
 				0F4D178926DFE5D9007A2133 /* VideoWriterViewModel.swift in Sources */,
-				0F742B4B26E91052008D8EE2 /* Register.swift in Sources */,
+				0F742B4B26E91052008D8EE2 /* RegisterView.swift in Sources */,
+				0F0E42682705CAC5007E1291 /* LoginViewModel.swift in Sources */,
 				0F48139926FCEB45000290B2 /* RegisterViewModel.swift in Sources */,
 				0F0E42542705C142007E1291 /* VideoWriterModel.swift in Sources */,
 				0F48139626FB9256000290B2 /* AuthViewModel.swift in Sources */,
+				0F8E6883270B16AC007CE188 /* SessionUserDetailsModel.swift in Sources */,
+				0F0E426C2705CD3D007E1291 /* UserLoginModel.swift in Sources */,
+				0F0E426F2705CD4C007E1291 /* UserRegisterModel.swift in Sources */,
 				0F0E425E2705C651007E1291 /* CustomTextFieldView.swift in Sources */,
+				0F8E6887270B17A7007CE188 /* SessionService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,20 +586,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Glow.ai/Glow.ai.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Glow.ai/Preview Content\"";
-				DEVELOPMENT_TEAM = K97B5X35B2;
+				DEVELOPMENT_TEAM = 5C953N4USZ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Glow.ai/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Glow.ai;
+				PRODUCT_BUNDLE_IDENTIFIER = Glow.app.ai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -527,20 +610,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Glow.ai/Glow.ai.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Glow.ai/Preview Content\"";
-				DEVELOPMENT_TEAM = K97B5X35B2;
+				DEVELOPMENT_TEAM = 5C953N4USZ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Glow.ai/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Glow.ai;
+				PRODUCT_BUNDLE_IDENTIFIER = Glow.app.ai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

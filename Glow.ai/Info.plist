@@ -2,22 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>TitilliumWeb-Black.ttf</string>
-		<string>TitilliumWeb-Bold.ttf</string>
-		<string>TitilliumWeb-Regular.ttf</string>
-		<string>TitilliumWeb-SemiBold.ttf</string>
-		<string>TitilliumWeb-ExtraLight.ttf</string>
-		<string>TitilliumWeb-BoldItalic.ttf</string>
-		<string>TitilliumWeb-ExtraLightItalic.ttf</string>
-		<string>TitilliumWeb-SemiBoldItalic.ttf</string>
-		<string>TitilliumWeb-LightItalic.ttf</string>
-		<string>TitilliumWeb-Italic.ttf</string>
-		<string>TitilliumWeb-Light.ttf</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Glow.ai</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -40,6 +28,20 @@
 	<string>The microphone needs to record audio for this tutorial.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app needs to save to the photo library for this tutorial</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>TitilliumWeb-Black.ttf</string>
+		<string>TitilliumWeb-Bold.ttf</string>
+		<string>TitilliumWeb-Regular.ttf</string>
+		<string>TitilliumWeb-SemiBold.ttf</string>
+		<string>TitilliumWeb-ExtraLight.ttf</string>
+		<string>TitilliumWeb-BoldItalic.ttf</string>
+		<string>TitilliumWeb-ExtraLightItalic.ttf</string>
+		<string>TitilliumWeb-SemiBoldItalic.ttf</string>
+		<string>TitilliumWeb-LightItalic.ttf</string>
+		<string>TitilliumWeb-Italic.ttf</string>
+		<string>TitilliumWeb-Light.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -56,8 +58,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

@@ -8,15 +8,30 @@ import SwiftUI
 import Firebase
 @main
 struct GlowApp: App {
-    
+    @StateObject var sessionService = SessionService()
     init() {
         FirebaseApp.configure()
     }
     var body: some Scene {
         WindowGroup {
-            let authModel = AuthViewModel()
-            ContentView()
-                .environmentObject(authModel)
+            
+            NavigationView {
+                switch sessionService.state {
+                case .loggedIn:
+                    CameraView()
+                case .loggedOut:
+                    LoginView()
+                
+                }
+               
+            }
+            .environmentObject(sessionService)
+            
         }
+        
+        
+        
+        
     }
+    
 }
