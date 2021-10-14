@@ -36,3 +36,43 @@ extension View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+
+public struct NeonDefaultValues {
+    public static let lineWidth: CGFloat = 16
+    public static let cornerRadius: CGFloat = 16
+    public static let shadowRadius: CGFloat = 24
+}
+
+public struct NeonCircle: ViewModifier {
+    public let color: Color
+    public var lineWidth: CGFloat = NeonDefaultValues.lineWidth
+    public var shadowRadius: CGFloat = NeonDefaultValues.shadowRadius
+    
+    public init(color: Color,
+                lineWidth: CGFloat? = nil,
+                cornerRadius: CGFloat? = nil,
+                shadowRadius: CGFloat? = nil) {
+        self.color = color
+        
+        if let width = lineWidth {
+            self.lineWidth = width
+        }
+        
+        if let radius = shadowRadius {
+            self.shadowRadius = radius
+        }
+    }
+    
+    public func body(content: Content) -> some View {
+        content
+            .padding()
+            .background(
+                Circle()
+                    .stroke(lineWidth: lineWidth)
+                    .foregroundColor(color)
+                    .shadow(color: color,
+                            radius: shadowRadius)
+                
+            )
+    }
+}

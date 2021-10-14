@@ -8,7 +8,6 @@
 import SwiftUI
 import Photos
 import Vision
-
 class CameraViewModel: NSObject, ObservableObject {
     
     
@@ -20,6 +19,8 @@ class CameraViewModel: NSObject, ObservableObject {
     var posturekeypoints:[CGPoint]?
     var faceBox:CGRect?
     var imageSize:CGSize?
+//    var graphicsRenderer:UIGraphicsImageRenderer = UIGraphicsImageRenderer()
+
     
     // MARK: Camera Model
     var cameraModel = CameraModel()
@@ -31,6 +32,11 @@ class CameraViewModel: NSObject, ObservableObject {
     // MARK: Capture session Functions
     
     public func setupCamera() {
+//        let format = UIGraphicsImageRendererFormat()
+//        format.scale = 0.8
+//        format.opaque = true
+//        format.preferredRange = .standard
+//        self.graphicsRenderer = UIGraphicsImageRenderer(bounds: CGRect(origin: .zero, size: CGSize(width: 1080.0, height: 1920.0)), format: format)
         setupSession()
         startSession()
     }
@@ -149,7 +155,8 @@ extension CameraViewModel: AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptur
         var uiImage = UIImage(cgImage: cgImage)
         let rect = CGRect(origin: .zero, size: CGSize(width: uiImage.size.width, height: uiImage.size.height))
         let format = UIGraphicsImageRendererFormat()
-        format.scale = 1
+        format.scale = 0.5
+        format.preferredRange = .standard
         
         //Get image size
         self.imageSize = uiImage.size
@@ -165,23 +172,26 @@ extension CameraViewModel: AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptur
             bonespath.close()
             let bonesShape = CAShapeLayer()
             bonesShape.fillColor = .none
-            bonesShape.strokeColor = UIColor.brown.cgColor
-            bonesShape.lineWidth = 5
+            bonesShape.strokeColor = UIColor.red.cgColor
+            bonesShape.lineWidth = 13
             bonesShape.path = bonespath.cgPath
-            
+            bonesShape.shadowRadius = 20
+            bonesShape.shadowOpacity = 1.0
+            bonesShape.shadowOffset = .zero
+            bonesShape.shadowColor = UIColor.red.cgColor
             uiImage = UIGraphicsImageRenderer(bounds: rect, format: format).image { (ctx) in
-                uiImage.draw(at: CGPoint.zero, blendMode: .multiply, alpha: 1)
-                bonesShape.render(in: ctx.cgContext)
-                for point in self.posturekeypoints! {
-           
-                        ctx.cgContext.setFillColor(UIColor.gray.cgColor)
-                        let rectangle = CGRect(x: point.x - 10, y: point.y - 10, width: 20, height: 20)
-                        ctx.cgContext.addEllipse(in: rectangle)
-                        ctx.cgContext.drawPath(using: .fillStroke)
-           
-                }
-               
-            }
+//                uiImage.draw(at: CGPoint.zero, blendMode: .multiply, alpha: 0.7)
+                            bonesShape.render(in: ctx.cgContext)
+                            for point in self.posturekeypoints! {
+                       
+                                    ctx.cgContext.setFillColor(UIColor.gray.cgColor)
+                                    let rectangle = CGRect(x: point.x - 10, y: point.y - 10, width: 20, height: 20)
+                                    ctx.cgContext.addEllipse(in: rectangle)
+                                    ctx.cgContext.drawPath(using: .fillStroke)
+                       
+                            }
+                           
+                        }
         }
         
 
@@ -199,20 +209,21 @@ extension CameraViewModel: AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptur
             
             self.displayImage = uiImage
             // Create a new image-request handler.
-            let requestHandler = VNImageRequestHandler(cmSampleBuffer: sampleBuffer,
-                                                       orientation: .up,
-                                                       options: [:])
-
-            // Create a new request to recognize a human body pose.
-            let request = VNDetectHumanBodyPoseRequest(completionHandler: self.bodyPoseHandler)
             
-      
-            do {
-                // Perform the body pose-detection request.
-                try requestHandler.perform([request])
-            } catch {
-                print("Unable to perform the request: \(error).")
-            }
+        }
+        let requestHandler = VNImageRequestHandler(cmSampleBuffer: sampleBuffer,
+                                                   orientation: .up,
+                                                   options: [:])
+
+        // Create a new request to recognize a human body pose.
+        let request = VNDetectHumanBodyPoseRequest(completionHandler: self.bodyPoseHandler)
+        
+  
+        do {
+            // Perform the body pose-detection request.
+            try requestHandler.perform([request])
+        } catch {
+            print("Unable to perform the request: \(error).")
         }
     }
     func imageToBuffer(from image: UIImage) -> CVPixelBuffer? {
@@ -291,7 +302,5 @@ extension CameraViewModel {
         }
         self.posturekeypoints = imagePoints
     }
-    
-
   
 }

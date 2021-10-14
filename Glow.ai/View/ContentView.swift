@@ -20,7 +20,7 @@ struct CameraView: View {
               .resizable()
               .aspectRatio(contentMode: .fill)
               .ignoresSafeArea(.all, edges: .all)
-          
+            
           VStack {
             Text( "Hello, " + sessionService.userDetails.username + ".")
                 .foregroundColor(Color.newPrimaryColor)
@@ -48,6 +48,10 @@ struct CameraView: View {
                 
             }
             .padding(15)
+            
+        
+            
+                
             Spacer()
             HStack {
               Spacer()
