@@ -19,9 +19,12 @@ class CameraViewModel: NSObject, ObservableObject {
     var posturekeypoints:[CGPoint]?
     var faceBox:CGRect?
     var imageSize:CGSize?
-//    var graphicsRenderer:UIGraphicsImageRenderer = UIGraphicsImageRenderer()
-
-    
+    var nosePoint:CGPoint?
+    var leftLegPoints:[CGPoint]?
+    var leftArmPoints:[CGPoint]?
+    var rightLegPoints:[CGPoint]?
+    var rightArmPoints:[CGPoint]?
+    var torsoPoints:[CGPoint]?
     // MARK: Camera Model
     var cameraModel = CameraModel()
     
@@ -171,6 +174,8 @@ extension CameraViewModel: AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptur
             }
             bonespath.close()
             let bonesShape = CAShapeLayer()
+            bonesShape.lineCap = .round
+            bonesShape.lineJoin = .round
             bonesShape.fillColor = .none
             bonesShape.strokeColor = UIColor.red.cgColor
             bonesShape.lineWidth = 13
@@ -179,9 +184,12 @@ extension CameraViewModel: AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptur
             bonesShape.shadowOpacity = 1.0
             bonesShape.shadowOffset = .zero
             bonesShape.shadowColor = UIColor.red.cgColor
+          
+            
+            
             uiImage = UIGraphicsImageRenderer(bounds: rect, format: format).image { (ctx) in
 //                uiImage.draw(at: CGPoint.zero, blendMode: .multiply, alpha: 0.7)
-                            bonesShape.render(in: ctx.cgContext)
+//                            bonesShape.render(in: ctx.cgContext)
                             for point in self.posturekeypoints! {
                        
                                     ctx.cgContext.setFillColor(UIColor.gray.cgColor)
@@ -190,6 +198,139 @@ extension CameraViewModel: AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptur
                                     ctx.cgContext.drawPath(using: .fillStroke)
                        
                             }
+                            if self.nosePoint != nil {
+                                let facePath = UIBezierPath()
+                                facePath.addArc(withCenter: CGPoint(x: self.nosePoint!.x, y: self.nosePoint!.y - 80) , radius: 95, startAngle: .zero, endAngle: CGFloat(Double.pi * 2.0), clockwise: true)
+                                facePath.move(to: CGPoint(x: self.nosePoint!.x - 50, y: self.nosePoint!.y - 120))
+                                facePath.addLine(to:CGPoint(x: self.nosePoint!.x - 20, y: self.nosePoint!.y - 95))
+                                
+                                facePath.move(to: CGPoint(x: self.nosePoint!.x - 20, y: self.nosePoint!.y - 120))
+                                facePath.addLine(to:CGPoint(x: self.nosePoint!.x - 50, y: self.nosePoint!.y - 95))
+                                
+                                
+                                facePath.move(to: CGPoint(x: self.nosePoint!.x + 50, y: self.nosePoint!.y - 120))
+                                facePath.addLine(to:CGPoint(x: self.nosePoint!.x + 20, y: self.nosePoint!.y - 95))
+                                
+                                facePath.move(to: CGPoint(x: self.nosePoint!.x + 20, y: self.nosePoint!.y - 120))
+                                facePath.addLine(to:CGPoint(x: self.nosePoint!.x + 50, y: self.nosePoint!.y - 95))
+                                
+                                facePath.move(to: CGPoint(x: self.nosePoint!.x - 45, y: self.nosePoint!.y - 30))
+                                facePath.addQuadCurve(to: CGPoint(x: self.nosePoint!.x + 45, y: self.nosePoint!.y - 30), controlPoint: CGPoint(x: self.nosePoint!.x, y: self.nosePoint!.y + 10 ))
+                                
+                                
+                                
+                                let faceShape = CAShapeLayer()
+                                faceShape.lineCap = .round
+                                faceShape.lineJoin = .round
+                                faceShape.fillColor = .none
+                                faceShape.strokeColor = UIColor.red.cgColor
+                                faceShape.lineWidth = 10
+                                faceShape.path = facePath.cgPath
+                                faceShape.shadowRadius = 20
+                                faceShape.shadowOpacity = 1.0
+                                faceShape.shadowOffset = .zero
+                                faceShape.shadowColor = UIColor.red.cgColor
+                                faceShape.render(in: ctx.cgContext)
+                            }
+                            
+                            if (self.leftLegPoints != nil) &&  !self.leftLegPoints!.isEmpty  {
+                                let leftLegPath = UIBezierPath()
+                                leftLegPath.move(to: leftLegPoints![0])
+                                leftLegPath.addLine(to: leftLegPoints![1])
+                                leftLegPath.addLine(to: leftLegPoints![2])
+                                
+                                let leftLegShape = CAShapeLayer()
+                                leftLegShape.lineCap = .round
+                                leftLegShape.lineJoin = .round
+                                leftLegShape.fillColor = .none
+                                leftLegShape.strokeColor = UIColor.red.cgColor
+                                leftLegShape.lineWidth = 10
+                                leftLegShape.path = leftLegPath.cgPath
+                                leftLegShape.shadowRadius = 20
+                                leftLegShape.shadowOpacity = 1.0
+                                leftLegShape.shadowOffset = .zero
+                                leftLegShape.shadowColor = UIColor.red.cgColor
+                                leftLegShape.render(in: ctx.cgContext)
+                            }
+                            if (self.rightLegPoints != nil) &&  !self.rightLegPoints!.isEmpty  {
+                                let rightLegPath = UIBezierPath()
+                                rightLegPath.move(to: rightLegPoints![0])
+                                rightLegPath.addLine(to: rightLegPoints![1])
+                                rightLegPath.addLine(to: rightLegPoints![2])
+                                
+                                let rightLegShape = CAShapeLayer()
+                                rightLegShape.lineCap = .round
+                                rightLegShape.lineJoin = .round
+                                rightLegShape.fillColor = .none
+                                rightLegShape.strokeColor = UIColor.red.cgColor
+                                rightLegShape.lineWidth = 10
+                                rightLegShape.path = rightLegPath.cgPath
+                                rightLegShape.shadowRadius = 20
+                                rightLegShape.shadowOpacity = 1.0
+                                rightLegShape.shadowOffset = .zero
+                                rightLegShape.shadowColor = UIColor.red.cgColor
+                                rightLegShape.render(in: ctx.cgContext)
+                            }
+                            if (self.leftArmPoints != nil) &&  !self.leftArmPoints!.isEmpty  {
+                                let leftArmPath = UIBezierPath()
+                                leftArmPath.move(to: leftArmPoints![0])
+                                leftArmPath.addLine(to: leftArmPoints![1])
+                                leftArmPath.addLine(to: leftArmPoints![2])
+                                
+                                let leftArmShape = CAShapeLayer()
+                                leftArmShape.lineCap = .round
+                                leftArmShape.lineJoin = .round
+                                leftArmShape.fillColor = .none
+                                leftArmShape.strokeColor = UIColor.red.cgColor
+                                leftArmShape.lineWidth = 10
+                                leftArmShape.path = leftArmPath.cgPath
+                                leftArmShape.shadowRadius = 20
+                                leftArmShape.shadowOpacity = 1.0
+                                leftArmShape.shadowOffset = .zero
+                                leftArmShape.shadowColor = UIColor.red.cgColor
+                                leftArmShape.render(in: ctx.cgContext)
+                            }
+                            if (self.rightArmPoints != nil) &&  !self.rightArmPoints!.isEmpty  {
+                                let rightArmPath = UIBezierPath()
+                                rightArmPath.move(to: rightArmPoints![0])
+                                rightArmPath.addLine(to: rightArmPoints![1])
+                                rightArmPath.addLine(to: rightArmPoints![2])
+                                
+                                let rightArmShape = CAShapeLayer()
+                                rightArmShape.lineCap = .round
+                                rightArmShape.lineJoin = .round
+                                rightArmShape.fillColor = .none
+                                rightArmShape.strokeColor = UIColor.red.cgColor
+                                rightArmShape.lineWidth = 10
+                                rightArmShape.path = rightArmPath.cgPath
+                                rightArmShape.shadowRadius = 20
+                                rightArmShape.shadowOpacity = 1.0
+                                rightArmShape.shadowOffset = .zero
+                                rightArmShape.shadowColor = UIColor.red.cgColor
+                                rightArmShape.render(in: ctx.cgContext)
+                            }
+                            
+                            if (self.torsoPoints != nil) &&  !self.torsoPoints!.isEmpty  {
+                                let torsoPath = UIBezierPath()
+                                torsoPath.move(to: torsoPoints![0])
+                                torsoPath.addLine(to: torsoPoints![1])
+                                torsoPath.addLine(to: torsoPoints![2])
+                                torsoPath.addLine(to: torsoPoints![3])
+                                torsoPath.close()
+                                let torsoShape = CAShapeLayer()
+                                torsoShape.lineCap = .round
+                                torsoShape.lineJoin = .round
+                                torsoShape.fillColor = .none
+                                torsoShape.strokeColor = UIColor.red.cgColor
+                                torsoShape.lineWidth = 10
+                                torsoShape.path = torsoPath.cgPath
+                                torsoShape.shadowRadius = 20
+                                torsoShape.shadowOpacity = 1.0
+                                torsoShape.shadowOffset = .zero
+                                torsoShape.shadowColor = UIColor.red.cgColor
+                                torsoShape.render(in: ctx.cgContext)
+                            }
+                            
                            
                         }
         }
@@ -276,14 +417,9 @@ extension CameraViewModel {
 
         // Torso joint names in a clockwise ordering.
         let joints: [VNHumanBodyPoseObservation.JointName] = [
-            .leftEar,
-            .leftEye,
-            .nose,
-            .rightEye,
-            .rightEar,
-            .leftAnkle,
-            .leftKnee,
             .leftHip,
+            .leftKnee,
+            .leftAnkle,
             .leftWrist,
             .leftElbow,
             .leftShoulder,
@@ -296,6 +432,44 @@ extension CameraViewModel {
             .neck,
             .root
         ]
+        if recognizedPoints[.nose] != nil {
+            self.nosePoint = CGPoint(x: recognizedPoints[.nose]!.x * Double(self.imageSize!.width), y: (1 - recognizedPoints[.nose]!.y) * Double(self.imageSize!.height))
+        }
+        if (recognizedPoints[.leftKnee] != nil) && (recognizedPoints[.leftAnkle] != nil) && (recognizedPoints[.leftHip] != nil) {
+            let pt1 = CGPoint(x: recognizedPoints[.leftHip]!.x * Double(self.imageSize!.width), y: (1 - recognizedPoints[.leftHip]!.y) * Double(self.imageSize!.height))
+            let pt2 = CGPoint(x: recognizedPoints[.leftKnee]!.x * Double(self.imageSize!.width), y: (1 - recognizedPoints[.leftKnee]!.y) * Double(self.imageSize!.height))
+            let pt3 = CGPoint(x: recognizedPoints[.leftAnkle]!.x * Double(self.imageSize!.width), y: (1 - recognizedPoints[.leftAnkle]!.y) * Double(self.imageSize!.height))
+            
+            self.leftLegPoints = [pt1,pt2,pt3]
+        }
+        if (recognizedPoints[.leftShoulder] != nil) && (recognizedPoints[.leftElbow] != nil) && (recognizedPoints[.leftWrist] != nil) {
+            let pt1 = CGPoint(x: recognizedPoints[.leftShoulder]!.x * Double(self.imageSize!.width), y: (1 - recognizedPoints[.leftShoulder]!.y) * Double(self.imageSize!.height))
+            let pt2 = CGPoint(x: recognizedPoints[.leftElbow]!.x * Double(self.imageSize!.width), y: (1 - recognizedPoints[.leftElbow]!.y) * Double(self.imageSize!.height))
+            let pt3 = CGPoint(x: recognizedPoints[.leftWrist]!.x * Double(self.imageSize!.width), y: (1 - recognizedPoints[.leftWrist]!.y) * Double(self.imageSize!.height))
+            
+            self.leftArmPoints = [pt1,pt2,pt3]
+        }
+        if (recognizedPoints[.rightAnkle] != nil) && (recognizedPoints[.rightHip] != nil) && (recognizedPoints[.rightKnee] != nil) {
+            let pt1 = CGPoint(x: recognizedPoints[.rightHip]!.x * Double(self.imageSize!.width), y: (1 - recognizedPoints[.rightHip]!.y) * Double(self.imageSize!.height))
+            let pt2 = CGPoint(x: recognizedPoints[.rightKnee]!.x * Double(self.imageSize!.width), y: (1 - recognizedPoints[.rightKnee]!.y) * Double(self.imageSize!.height))
+            let pt3 = CGPoint(x: recognizedPoints[.rightAnkle]!.x * Double(self.imageSize!.width), y: (1 - recognizedPoints[.rightAnkle]!.y) * Double(self.imageSize!.height))
+            
+            self.rightLegPoints = [pt1,pt2,pt3]
+        }
+        if (recognizedPoints[.rightShoulder] != nil) && (recognizedPoints[.rightElbow] != nil) && (recognizedPoints[.rightWrist] != nil) {
+            let pt1 = CGPoint(x: recognizedPoints[.rightShoulder]!.x * Double(self.imageSize!.width), y: (1 - recognizedPoints[.rightShoulder]!.y) * Double(self.imageSize!.height))
+            let pt2 = CGPoint(x: recognizedPoints[.rightElbow]!.x * Double(self.imageSize!.width), y: (1 - recognizedPoints[.rightElbow]!.y) * Double(self.imageSize!.height))
+            let pt3 = CGPoint(x: recognizedPoints[.rightWrist]!.x * Double(self.imageSize!.width), y: (1 - recognizedPoints[.rightWrist]!.y) * Double(self.imageSize!.height))
+            
+            self.rightArmPoints = [pt1,pt2,pt3]
+        }
+        if (recognizedPoints[.rightShoulder] != nil) && (recognizedPoints[.rightHip] != nil) && (recognizedPoints[.leftHip] != nil) && (recognizedPoints[.leftShoulder] != nil) {
+            let pt1 = CGPoint(x: recognizedPoints[.rightShoulder]!.x * Double(self.imageSize!.width), y: (1 - recognizedPoints[.rightShoulder]!.y) * Double(self.imageSize!.height))
+            let pt2 = CGPoint(x: recognizedPoints[.rightHip]!.x * Double(self.imageSize!.width), y: (1 - recognizedPoints[.rightHip]!.y) * Double(self.imageSize!.height))
+            let pt3 = CGPoint(x: recognizedPoints[.leftHip]!.x * Double(self.imageSize!.width), y: (1 - recognizedPoints[.leftHip]!.y) * Double(self.imageSize!.height))
+            let pt4 = CGPoint(x: recognizedPoints[.leftShoulder]!.x * Double(self.imageSize!.width), y: (1 - recognizedPoints[.leftShoulder]!.y) * Double(self.imageSize!.height))
+            self.torsoPoints = [pt1,pt2,pt3,pt4]
+        }
         let imagePoints: [CGPoint] = joints.compactMap {
         guard let point = recognizedPoints[$0], point.confidence > 0.55 else { return nil }
         return CGPoint(x: point.x * Double(self.imageSize!.width) , y: (1 - point.y) * Double(self.imageSize!.height))
