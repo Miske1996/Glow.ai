@@ -8,7 +8,6 @@
 import Foundation
 
 struct UserRegisterModel {
-    
     var email = ""
     var username = ""
     var password = ""

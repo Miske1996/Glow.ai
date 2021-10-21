@@ -6,6 +6,7 @@ target 'Glow.ai' do
   use_frameworks!
 pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
+pod 'GoogleSignIn'
 pod 'Firebase/Firestore'	
 pod 'Firebase/Database'
   # Pods for Glow.ai

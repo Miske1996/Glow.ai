@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import GoogleSignIn
 
 enum LoginState {
     case successfull
@@ -15,7 +16,7 @@ enum LoginState {
 }
 
 protocol LoginViewModelProtocol {
-    func login()
+    func login(completionHandler: @escaping () -> Void)
     var service: LoginServiceProtocol {get}
     var state: LoginState {get}
     var credentials: UserLoginModel {get}
@@ -23,6 +24,8 @@ protocol LoginViewModelProtocol {
 }
 
 class LoginViewModel: ObservableObject , LoginViewModelProtocol{
+   
+    
  
     
     var service: LoginServiceProtocol
@@ -56,7 +59,7 @@ class LoginViewModel: ObservableObject , LoginViewModelProtocol{
     }
     
     
-    func login() {
+    func login(completionHandler: @escaping () -> Void) {
         
         service
             .login(with: credentials)
@@ -74,7 +77,9 @@ class LoginViewModel: ObservableObject , LoginViewModelProtocol{
                 print("SUCCESSSSS")
                 self?.state = .successfull
                 self?.loggedIn = true
+                completionHandler()
             }
             .store(in: &subscriptions)
     }
+    
 }

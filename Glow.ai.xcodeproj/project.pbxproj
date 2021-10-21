@@ -33,10 +33,13 @@
 		0F742B6726EA3B6F008D8EE2 /* TitilliumWeb-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F742B5B26EA3B6F008D8EE2 /* TitilliumWeb-Light.ttf */; };
 		0F742B6B26EB8985008D8EE2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F742B6A26EB8985008D8EE2 /* Utils.swift */; };
 		0F742B7126EBAB7F008D8EE2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F742B7026EBAB7F008D8EE2 /* LoginView.swift */; };
-		0F78DB7C26F4F4B700B1E986 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F78DB7B26F4F4B700B1E986 /* GoogleService-Info.plist */; };
 		0F8E68692709C684007CE188 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8E68682709C684007CE188 /* RegistrationService.swift */; };
 		0F8E6883270B16AC007CE188 /* SessionUserDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8E6882270B16AC007CE188 /* SessionUserDetailsModel.swift */; };
 		0F8E6887270B17A7007CE188 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8E6886270B17A7007CE188 /* SessionService.swift */; };
+		0FA9CC5C27216498004B9220 /* LoginWithAppleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA9CC5B27216497004B9220 /* LoginWithAppleService.swift */; };
+		0FA9CC5F272164FF004B9220 /* AppleUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA9CC5E272164FF004B9220 /* AppleUserModel.swift */; };
+		0FA9CC6527216BD9004B9220 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FA9CC6427216BD9004B9220 /* GoogleService-Info.plist */; };
+		0FDD6F37271EDBCA00D4D48B /* RecordingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDD6F36271EDBCA00D4D48B /* RecordingModel.swift */; };
 		63A62DE53D787FF712E85C8E /* Pods_Glow_ai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6FF512FD7E57794584165CA /* Pods_Glow_ai.framework */; };
 		D339619425CE17E500A5B699 /* GlowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D339619325CE17E500A5B699 /* GlowApp.swift */; };
 		D339619625CE17E500A5B699 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D339619525CE17E500A5B699 /* ContentView.swift */; };
@@ -71,11 +74,14 @@
 		0F742B5B26EA3B6F008D8EE2 /* TitilliumWeb-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Light.ttf"; sourceTree = "<group>"; };
 		0F742B6A26EB8985008D8EE2 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		0F742B7026EBAB7F008D8EE2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		0F78DB7B26F4F4B700B1E986 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0F7A79E92716F63C00815379 /* Glow.ai.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Glow.ai.entitlements; sourceTree = "<group>"; };
 		0F8E68682709C684007CE188 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
 		0F8E6882270B16AC007CE188 /* SessionUserDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUserDetailsModel.swift; sourceTree = "<group>"; };
 		0F8E6886270B17A7007CE188 /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
+		0FA9CC5B27216497004B9220 /* LoginWithAppleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithAppleService.swift; sourceTree = "<group>"; };
+		0FA9CC5E272164FF004B9220 /* AppleUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleUserModel.swift; sourceTree = "<group>"; };
+		0FA9CC6427216BD9004B9220 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0FDD6F36271EDBCA00D4D48B /* RecordingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingModel.swift; sourceTree = "<group>"; };
 		C4D2CA4928F796FB246F8516 /* Pods-Glow.ai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glow.ai.debug.xcconfig"; path = "Target Support Files/Pods-Glow.ai/Pods-Glow.ai.debug.xcconfig"; sourceTree = "<group>"; };
 		C53C2BAA481772DE4BB24804 /* Pods-Glow.ai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glow.ai.release.xcconfig"; path = "Target Support Files/Pods-Glow.ai/Pods-Glow.ai.release.xcconfig"; sourceTree = "<group>"; };
 		C6FF512FD7E57794584165CA /* Pods_Glow_ai.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Glow_ai.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +186,7 @@
 				0F8E6882270B16AC007CE188 /* SessionUserDetailsModel.swift */,
 				0F0E426B2705CD3D007E1291 /* UserLoginModel.swift */,
 				0F0E426E2705CD4C007E1291 /* UserRegisterModel.swift */,
+				0FA9CC5E272164FF004B9220 /* AppleUserModel.swift */,
 			);
 			path = AuthModels;
 			sourceTree = "<group>";
@@ -188,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				0F45528A2707100100868FA3 /* AlertModel.swift */,
+				0FDD6F36271EDBCA00D4D48B /* RecordingModel.swift */,
 			);
 			path = AppSharedModels;
 			sourceTree = "<group>";
@@ -239,6 +247,7 @@
 			children = (
 				0F8E68682709C684007CE188 /* RegistrationService.swift */,
 				0F3D7331270C7EA8005A2928 /* LoginService.swift */,
+				0FA9CC5B27216497004B9220 /* LoginWithAppleService.swift */,
 			);
 			path = AuthService;
 			sourceTree = "<group>";
@@ -289,8 +298,8 @@
 				0F742B4E26EA3ADD008D8EE2 /* Fonts */,
 				D339619325CE17E500A5B699 /* GlowApp.swift */,
 				D339619725CE17E800A5B699 /* Assets.xcassets */,
+				0FA9CC6427216BD9004B9220 /* GoogleService-Info.plist */,
 				D339619C25CE17E800A5B699 /* Info.plist */,
-				0F78DB7B26F4F4B700B1E986 /* GoogleService-Info.plist */,
 				D339619925CE17E800A5B699 /* Preview Content */,
 				0F742B6A26EB8985008D8EE2 /* Utils.swift */,
 			);
@@ -325,6 +334,7 @@
 				D339618D25CE17E500A5B699 /* Frameworks */,
 				D339618E25CE17E500A5B699 /* Resources */,
 				9E91AC1A3525FCCD6231B169 /* [CP] Embed Pods Frameworks */,
+				C13EA3D19BE5C406FD33E683 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -385,7 +395,7 @@
 				0F742B6226EA3B6F008D8EE2 /* TitilliumWeb-ExtraLightItalic.ttf in Resources */,
 				0F742B6526EA3B6F008D8EE2 /* TitilliumWeb-LightItalic.ttf in Resources */,
 				0F742B6026EA3B6F008D8EE2 /* TitilliumWeb-ExtraLight.ttf in Resources */,
-				0F78DB7C26F4F4B700B1E986 /* GoogleService-Info.plist in Resources */,
+				0FA9CC6527216BD9004B9220 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +441,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Glow.ai/Pods-Glow.ai-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C13EA3D19BE5C406FD33E683 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Glow.ai/Pods-Glow.ai-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Glow.ai/Pods-Glow.ai-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Glow.ai/Pods-Glow.ai-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -443,11 +470,13 @@
 				D339619625CE17E500A5B699 /* ContentView.swift in Sources */,
 				0F0E424C2705BA40007E1291 /* CameraModel.swift in Sources */,
 				0F742B6B26EB8985008D8EE2 /* Utils.swift in Sources */,
+				0FA9CC5F272164FF004B9220 /* AppleUserModel.swift in Sources */,
 				0F3D7332270C7EA8005A2928 /* LoginService.swift in Sources */,
 				0F45528B2707100100868FA3 /* AlertModel.swift in Sources */,
 				D339619425CE17E500A5B699 /* GlowApp.swift in Sources */,
 				0F0E42652705C9A3007E1291 /* CameraViewModel.swift in Sources */,
 				0F4D178926DFE5D9007A2133 /* VideoWriterViewModel.swift in Sources */,
+				0FA9CC5C27216498004B9220 /* LoginWithAppleService.swift in Sources */,
 				0F742B4B26E91052008D8EE2 /* RegisterView.swift in Sources */,
 				0F0E42682705CAC5007E1291 /* LoginViewModel.swift in Sources */,
 				0F48139926FCEB45000290B2 /* RegisterViewModel.swift in Sources */,
@@ -457,6 +486,7 @@
 				0F0E426C2705CD3D007E1291 /* UserLoginModel.swift in Sources */,
 				0F0E426F2705CD4C007E1291 /* UserRegisterModel.swift in Sources */,
 				0F0E425E2705C651007E1291 /* CustomTextFieldView.swift in Sources */,
+				0FDD6F37271EDBCA00D4D48B /* RecordingModel.swift in Sources */,
 				0F8E6887270B17A7007CE188 /* SessionService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

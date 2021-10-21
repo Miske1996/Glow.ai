@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>697116809642-v8vrgqcpghv9nsft9fq56e41gcc5qiv5.apps.googleusercontent.com</string>
+	<string>697116809642-9c01s2g5ohs5fk009idoanhvubfttoir.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.697116809642-v8vrgqcpghv9nsft9fq56e41gcc5qiv5</string>
+	<string>com.googleusercontent.apps.697116809642-9c01s2g5ohs5fk009idoanhvubfttoir</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDEMblb_Fvea-0oX5uQDOIumAIzdZA1lRE</string>
 	<key>GCM_SENDER_ID</key>
@@ -19,16 +19,18 @@
 	<key>STORAGE_BUCKET</key>
 	<string>glow-ai.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:697116809642:ios:b91cb856912360e804b3d3</string>
+	<string>1:697116809642:ios:d5729e7ee9e0e91504b3d3</string>
+	<key>DATABASE_URL</key>
+	<string>https://glow-ai-default-rtdb.europe-west1.firebasedatabase.app</string>
 </dict>
 </plist>

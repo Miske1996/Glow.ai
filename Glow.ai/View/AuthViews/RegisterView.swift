@@ -11,6 +11,7 @@ struct RegisterView: View {
     @StateObject private var registerVM = RegisterViewModel(service: RegistrationServiceImpl())
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var authModel:AuthViewModel
+    @EnvironmentObject var sessionService: SessionService
     @State var alertModel:AlertModel = AlertModel()
     var body: some View {
         
@@ -27,25 +28,17 @@ struct RegisterView: View {
                     VStack{
                         CustomTextField(
                              placeholder: Text("Enter Your Email").foregroundColor(Color.gray).font(.custom("TitilliumWeb-ExtraLight", size: 16)),
-                            text: $registerVM.userInfo.email, commit:  {
-                                print(registerVM.userInfo.email)
-                            }, imageName: "envelope.open.fill", isSecure: false)
+                            text: $registerVM.userInfo.email, imageName: "envelope.open.fill", isSecure: false)
                         
                         CustomTextField(
                              placeholder: Text("Enter Your Username").foregroundColor(Color.gray).font(.custom("TitilliumWeb-ExtraLight", size: 16)),
-                            text: $registerVM.userInfo.username, commit:  {
-                                print(registerVM.userInfo.username)
-                            }, imageName: "person.fill", isSecure: false)
+                            text: $registerVM.userInfo.username, imageName: "person.fill", isSecure: false)
                         CustomTextField(
                            placeholder: Text("Enter Your Password").foregroundColor(Color.gray).font(.custom("TitilliumWeb-ExtraLight", size: 16)),
-                            text: $registerVM.userInfo.password, commit:  {
-                                print(registerVM.userInfo.username)
-                            }, imageName: "lock.fill", isSecure: true)
+                            text: $registerVM.userInfo.password, imageName: "lock.fill", isSecure: true)
                         CustomTextField(
                             placeholder: Text("Confirm Your Password").foregroundColor(Color.gray).font(.custom("TitilliumWeb-ExtraLight", size: 16)),
-                            text: $registerVM.userInfo.confirmedPassword, commit:  {
-                                print(registerVM.userInfo.username)
-                            }, imageName: "lock.fill", isSecure: true)
+                            text: $registerVM.userInfo.confirmedPassword, imageName: "lock.fill", isSecure: true)
                     }
                     
                   
@@ -54,18 +47,10 @@ struct RegisterView: View {
                             if !registerVM.userInfo.email.isEmpty && !registerVM.userInfo.password.isEmpty && !registerVM.userInfo.username.isEmpty && !registerVM.userInfo.confirmedPassword.isEmpty {
                                 print("Not empty")
                                 self.alertModel.isAlertPresented = false
-                                registerVM.register()
-//                                authModel.signUp(email: registerVM.user.email, password: registerVM.user.password,compltionHandler: { (result, error) in
-//                                    guard result != nil, error == nil else {
-//                                        self.alertModel.textAlertTitle = "ERROR"
-//                                        self.alertModel.textAlertMessage = "Please check your information"
-//                                        self.alertModel.isAlertPresented = true
-//                                        return
-//                                    }
-//                                   
-//                             print(result?.user.email)
-//                                    print("SUCCESS")
-//                                })
+                                registerVM.register {
+                                    sessionService.state = .loggedIn
+                                    sessionService.setupFirebaseHandler {}
+                                }
                                 
                             }else {
                                 self.alertModel.textAlertTitle = "EMPTY TEXT FIELD"
@@ -98,6 +83,7 @@ struct RegisterView: View {
                         Spacer()
                         Button(action: {
                                     print("google Tapped")
+                                    sessionService.signInWithGoogle()
                                 }) {
                             Image("google")
                                 .resizable()
@@ -138,11 +124,7 @@ struct RegisterView: View {
     
 }
 
-struct Register_Previews: PreviewProvider {
-    static var previews: some View {
-        RegisterView()
-    }
-}
+
 
 
 

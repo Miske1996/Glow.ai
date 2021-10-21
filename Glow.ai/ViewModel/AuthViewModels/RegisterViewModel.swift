@@ -14,7 +14,7 @@ enum RegistrationState {
 }
 
 protocol RegisterViewModelProtocol {
-    func register()
+    func register(completionHandler: @escaping () -> Void)
     var service: RegistrationService {get}
     var state: RegistrationState {get}
     var userInfo: UserRegisterModel {get}
@@ -27,7 +27,7 @@ final class RegisterViewModel: ObservableObject , RegisterViewModelProtocol{
     
     var state: RegistrationState = .na
     
-    var userInfo: UserRegisterModel = UserRegisterModel(email: "", username: "", password: "", confirmedPassword: "")
+    @Published var userInfo: UserRegisterModel = UserRegisterModel(email: "", username: "", password: "", confirmedPassword: "")
     
     private var subscriptions = Set<AnyCancellable>()
     init(service: RegistrationService) {
@@ -40,8 +40,7 @@ final class RegisterViewModel: ObservableObject , RegisterViewModelProtocol{
     }
     
     
-    func register() {
-        
+    func register(completionHandler: @escaping () -> Void) {
         service
             .register(with: userInfo)
             .sink { [weak self] res in
@@ -54,12 +53,9 @@ final class RegisterViewModel: ObservableObject , RegisterViewModelProtocol{
                 
             } receiveValue: { [weak self] in
                 self?.state = .successfull
+                completionHandler()
             }
-            .store(in: &subscriptions)
-      
-        
-        
-            
+            .store(in: &subscriptions)          
     }
     
     

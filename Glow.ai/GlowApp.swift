@@ -6,32 +6,24 @@
 //
 import SwiftUI
 import Firebase
+import GoogleSignIn
 @main
 struct GlowApp: App {
     @StateObject var sessionService = SessionService()
+    @StateObject var recording = Recording()
     init() {
         FirebaseApp.configure()
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+
     }
     var body: some Scene {
         WindowGroup {
-            
-            NavigationView {
-                switch sessionService.state {
-                case .loggedIn:
                     CameraView()
-                case .loggedOut:
-                    LoginView()
-                
-                }
-               
-            }
-            .environmentObject(sessionService)
+                        .environmentObject(sessionService)
+                        .environmentObject(recording)
+                        
             
         }
-        
-        
-        
-        
     }
     
 }

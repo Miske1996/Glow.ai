@@ -7,17 +7,14 @@
 
 
 import SwiftUI
-
+import FirebaseAuth
 struct LoginView: View {
     @StateObject private var loginVM = LoginViewModel(service: LoginService())
-//    @Binding var isLoginPresented: Bool
     @State var alertModel:AlertModel = AlertModel()
     @EnvironmentObject var authModel:AuthViewModel
     @EnvironmentObject var sessionService: SessionService
-
-
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
-        if !loginVM.loggedIn {
             NavigationView {
                 ZStack{
                     Color.black
@@ -50,23 +47,12 @@ struct LoginView: View {
                                 if !loginVM.credentials.email.isEmpty && !loginVM.credentials.password.isEmpty {
                                     print("Not empty")
                                     self.alertModel.isAlertPresented = false
-                                    loginVM.login()
-                                    if loginVM.loggedIn {
+                                    loginVM.login {
                                         sessionService.state = .loggedIn
                                     }
+                                    
                                  
-    //                                authModel.signIn(email: loginVM.credentials.email, password: loginVM.credentials.password,compltionHandler: { (result, error) in
-    //                                    guard result != nil, error == nil else {
-    //                                        self.alertModel.textAlertTitle = "ERROR AUTHENTIFICATION"
-    //                                        self.alertModel.textAlertMessage = "Please check your email or password"
-    //                                        self.alertModel.isAlertPresented = true
-    //                                        return
-    //                                    }
-    ////                                    isLoginPresented.toggle()
-    ////                                    print(result?.user.email)
-    //
-    //                                })
-    //
+  
                                 }else {
                                     self.alertModel.textAlertTitle = "EMPTY TEXT FIELD"
                                     self.alertModel.textAlertMessage = "Please fill all the text fields"
@@ -88,16 +74,30 @@ struct LoginView: View {
                             Spacer()
                             HStack {
                                 Spacer()
-                                Button(action: {
-                                            print("apple Tapped")
-                                        }) {
-                                    Image("apple")
-                                        .resizable()
-                                        .frame(width: 52, height: 52,alignment: .center)
-                                }
+//                                Button(action: {
+//
+//                                            print("apple Tapped")
+//                                        }) {
+//                                    Image("apple")
+//                                        .resizable()
+//                                        .frame(width: 52, height: 52,alignment: .center)
+//                                }
+                                SignInWithAppleToFirebase({ response in
+                                            if response == .success {
+                                                print("logged into Firebase through Apple!")
+                                                
+                                                sessionService.setupFirebaseHandler {
+                                                }
+                                            } else if response == .error {
+                                                print("error. Maybe the user cancelled or there's no internet")
+                                            }
+                                },sessionService: self.sessionService)
+                               
                                 Spacer()
                                 Button(action: {
                                             print("google Tapped")
+                                            sessionService.signInWithGoogle()
+                                            
                                         }) {
                                     Image("google")
                                         .resizable()
@@ -109,7 +109,7 @@ struct LoginView: View {
                                 print("go to register page tapped")
                                 
                             }) {
-                                NavigationLink(destination: RegisterView().navigationBarHidden(true)) {
+                                NavigationLink(destination: RegisterView().environmentObject(sessionService).navigationBarHidden(true)) {
                                     Text("Don't have an account?").foregroundColor(Color.gray).font(.custom("TitilliumWeb-ExtraLight", size: 18)).underline()
                                         .padding(.top,30)
                                 }
@@ -139,14 +139,10 @@ struct LoginView: View {
                 
                     
             }
-            .onAppear(perform: {
-                sessionService.setupFirebaseHandler()
-                
-            })
+           
             
-        }else {
-            NavigationLink(destination: CameraView(), isActive: $loginVM.loggedIn) { EmptyView() }
-        }
+            
+        
         
      
        
