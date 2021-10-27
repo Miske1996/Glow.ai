@@ -13,7 +13,7 @@ struct CameraModel {
     var activeInput: AVCaptureDeviceInput!
     let videoOutput = AVCaptureVideoDataOutput()
     let audioOutput = AVCaptureAudioDataOutput()
-    let videoDataOutputQueue = DispatchQueue(
-                                          label: "com.glow.videoOutput",
-                                            qos: .userInteractive)
+    var videoDataOutputQueue = DispatchQueue(
+                                          label: "com.glow.videoOutput"
+                                            /*qos: .userInteractive*/)
 }

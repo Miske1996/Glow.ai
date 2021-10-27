@@ -32,27 +32,27 @@ struct LoginView: View {
                                 CustomTextField(
                                      placeholder: Text("Enter Your Email").foregroundColor(Color.gray).font(.custom("TitilliumWeb-ExtraLight", size: 16)),
                                     text: $loginVM.credentials.email, imageName: "envelope.open.fill", isSecure: false)
-                                
-                                
+
+
                                 CustomTextField(
                                     placeholder: Text("Enter Your Password").foregroundColor(Color.gray).font(.custom("TitilliumWeb-ExtraLight", size: 16)),
                                     text: $loginVM.credentials.password, imageName: "lock.fill", isSecure: true)
-                                
+
                             }
-                            
-                          
+
+
                             Button(action: {
                                         print("Login Tapped")
-                                
+
                                 if !loginVM.credentials.email.isEmpty && !loginVM.credentials.password.isEmpty {
                                     print("Not empty")
                                     self.alertModel.isAlertPresented = false
                                     loginVM.login {
                                         sessionService.state = .loggedIn
                                     }
-                                    
-                                 
-  
+
+
+
                                 }else {
                                     self.alertModel.textAlertTitle = "EMPTY TEXT FIELD"
                                     self.alertModel.textAlertMessage = "Please fill all the text fields"
@@ -61,13 +61,13 @@ struct LoginView: View {
                                     }) {
                                         Text("Login")
                                             .customButton()
-                              
+
                             }
                             .padding(.top,25)
-                            
+
                             VStack{
                                 Divider()
-                                    
+
                                 Text("OR").foregroundColor(Color.gray).font(.custom("TitilliumWeb-ExtraLight", size: 16))
                                 Divider()
                             }
@@ -113,13 +113,12 @@ struct LoginView: View {
                                     Text("Don't have an account?").foregroundColor(Color.gray).font(.custom("TitilliumWeb-ExtraLight", size: 18)).underline()
                                         .padding(.top,30)
                                 }
-                                .navigationBarTitleDisplayMode(.inline)
                                 .navigationBarHidden(true)
                                 
                                
                             }
                            
-                                
+
                             Spacer()
                                 .frame(height:130)
                         }
@@ -139,6 +138,7 @@ struct LoginView: View {
                 
                     
             }
+            .navigationBarHidden(true)
            
             
             

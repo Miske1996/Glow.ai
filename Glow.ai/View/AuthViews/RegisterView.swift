@@ -72,14 +72,26 @@ struct RegisterView: View {
                     }
                     Spacer()
                     HStack {
-                        Spacer()
-                        Button(action: {
-                                    print("apple Tapped")
-                                }) {
-                            Image("apple")
-                                .resizable()
-                                .frame(width: 52, height: 52,alignment: .center)
-                        }
+//                        Spacer()
+//                        Button(action: {
+//                                    print("apple Tapped")
+//                                }) {
+//                            Image("apple")
+//                                .resizable()
+//                                .frame(width: 52, height: 52,alignment: .center)
+//                        }
+                        SignInWithAppleToFirebase({ response in
+                                    if response == .success {
+                                        print("logged into Firebase through Apple!")
+                                        
+                                        sessionService.setupFirebaseHandler {
+                                        }
+                                    } else if response == .error {
+                                        print("error. Maybe the user cancelled or there's no internet")
+                                    }
+                        },sessionService: self.sessionService)
+                        
+                        
                         Spacer()
                         Button(action: {
                                     print("google Tapped")

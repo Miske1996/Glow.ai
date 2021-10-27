@@ -80,9 +80,9 @@ class CameraViewModel: NSObject, ObservableObject {
     
     func startSession() {
         if !cameraModel.captureSession.isRunning {
-            DispatchQueue.global(qos: .default).async { [weak self] in
-                self?.cameraModel.captureSession.startRunning()
-        }
+//            DispatchQueue.global(qos: .default).async { [weak self] in
+                self.cameraModel.captureSession.startRunning()
+//        }
         }
     }
 
@@ -103,10 +103,12 @@ class CameraViewModel: NSObject, ObservableObject {
     }
 
     public func switchCamera() {
+        
         let position: AVCaptureDevice.Position = (cameraModel.activeInput.device.position == .back) ? .front : .back
         guard let device = camera(for: position) else {
           return
         }
+        cameraModel.captureSession.stopRunning() // This has to change to resolve the switch camera slowdown
         cameraModel.captureSession.beginConfiguration()
         cameraModel.captureSession.removeInput(cameraModel.activeInput)
         do {
@@ -117,6 +119,8 @@ class CameraViewModel: NSObject, ObservableObject {
         }
         cameraModel.captureSession.addInput(cameraModel.activeInput)
         cameraModel.captureSession.commitConfiguration()
+       
+        cameraModel.captureSession.startRunning()
     }
 
 }
@@ -429,22 +433,22 @@ extension CameraViewModel: AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptur
             
             self.displayImage = uiImage
             // Create a new image-request handler.
-            
-        }
-        let requestHandler = VNImageRequestHandler(cmSampleBuffer: sampleBuffer,
-                                                   orientation: .up,
-                                                   options: [:])
+            let requestHandler = VNImageRequestHandler(cmSampleBuffer: sampleBuffer,
+                                                       orientation: .up,
+                                                       options: [:])
 
-        // Create a new request to recognize a human body pose.
-        let request = VNDetectHumanBodyPoseRequest(completionHandler: self.bodyPoseHandler)
-        
-  
-        do {
-            // Perform the body pose-detection request.
-            try requestHandler.perform([request])
-        } catch {
-            print("Unable to perform the request: \(error).")
+            // Create a new request to recognize a human body pose.
+            let request = VNDetectHumanBodyPoseRequest(completionHandler: self.bodyPoseHandler)
+            
+      
+            do {
+                // Perform the body pose-detection request.
+                try requestHandler.perform([request])
+            } catch {
+                print("Unable to perform the request: \(error).")
+            }
         }
+       
     }
     func imageToBuffer(from image: UIImage) -> CVPixelBuffer? {
       let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary
